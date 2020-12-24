@@ -1,2 +1,4 @@
 /xgboost
 .vscode
+.gotest
+profiles/
