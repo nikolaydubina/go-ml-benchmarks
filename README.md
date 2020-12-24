@@ -6,14 +6,14 @@
 
 TODO: chart of calls like. coroutine -> Go serialize -> Go call -> Target ML framework receives call -> Target ML framework processing -> Target ML returns result to Go -> Go Deserialize
 
+- [ ] XGBoost Go (leaves) + Go
+- [ ] XGBoost C + IPC(unix docmain sockets) + Go
 - [ ] XGBoost C + cgo
 - [ ] XGBoost C + IPC(fifo) + Go
-- [ ] XGBoost C + IPC(unix docmain sockets) + Go
-- [ ] XGBoost (leaves) + Go
 - [ ] Pytorch + USWGI + gunicorn + IPC(unix domain sockets) + Go
+- [ ] Pytorch C + IPC(unix domain sockets) + Go
 - [ ] Pytorch C + cgo 
 - [ ] Pytorch C + IPC(fifo) + Go
-- [ ] Pytorch C + IPC(unix domain sockets) + Go
 
 ## Training
 
