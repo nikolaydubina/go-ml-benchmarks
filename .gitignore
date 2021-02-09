@@ -2,3 +2,4 @@
 .vscode
 .gotest
 profiles/
+*/.ipynb_checkpoints/*
