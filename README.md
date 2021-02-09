@@ -1,25 +1,15 @@
 # go-ml-benchmarks
 
-## Inference
-
-> Given I have input data for a single sample in a Go service, how quickly I can get inference result? 
+> Given I have input data for a single struct in a Go service, how quickly can I get inference result?
 
 TODO: chart of calls like. coroutine -> Go serialize -> Go call -> Target ML framework receives call -> Target ML framework processing -> Target ML returns result to Go -> Go Deserialize
 
-- [ ] XGBoost Go (leaves) + Go
-- [ ] XGBoost C + IPC(unix docmain sockets) + Go
-- [ ] XGBoost C + cgo
-- [ ] XGBoost C + IPC(fifo) + Go
-- [ ] Pytorch + USWGI + gunicorn + IPC(unix domain sockets) + Go
-- [ ] Pytorch C + IPC(unix domain sockets) + Go
-- [ ] Pytorch C + cgo 
-- [ ] Pytorch C + IPC(fifo) + Go
-
-## Training
-
-> Given I have training data in Go service, how long it would take to train model?
-
-Developing models in Go as of now is hard. Benchmarking training with data available in Go is major TODO.
+- [x] go-featureprocessing - unixsocket - python xgb
+- [ ] flatbuffers - unixsocket - python flatbuffers - sklearn - xgb
+- [ ] json - unixsocket - python rapidjson - sklearn - xgb
+- [ ] json - http - localhost - python rapidjson - sklearn - xgb
+- [ ] go-featureprocessing - cgo - xgb
+- [ ] go-featureprocessing - leaves
 
 ## Some numbers for reference
 
@@ -32,7 +22,7 @@ Go modules
 - [Go port of XGBoost and scikit-learn](https://github.com/dmitryikh/leaves)
 - [cgo bindings fo XGBoost](https://github.com/Unity-Technologies/go-xgboost)
 
-Arcicles
+Articles
 - [how-to article for Go leaves module](https://dev.to/blairhudson/machine-learning-microservices-python-and-xgboost-in-a-tiny-486kb-container-4on4)
 - [cgo performance](https://about.sourcegraph.com/go/gophercon-2018-adventures-in-cgo-performance/)
 - [cgo goroutines are not as performant](https://www.cockroachlabs.com/blog/the-cost-and-complexity-of-cgo/)
