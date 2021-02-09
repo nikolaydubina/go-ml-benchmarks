@@ -112,7 +112,7 @@ func BenchmarkXGB_Leaves(b *testing.B) {
 	}
 
 	var fp PassengerFeatureTransformer
-	config, err := ioutil.ReadFile("../../data/models/go-featureprocessor.json")
+	config, err := ioutil.ReadFile(path.Join(os.Getenv("PROJECT_PATH"), "data", "models", "go-featureprocessor.json"))
 	if err != nil {
 		panic(err)
 	}
@@ -120,7 +120,7 @@ func BenchmarkXGB_Leaves(b *testing.B) {
 		panic(err)
 	}
 
-	model, err := leaves.XGEnsembleFromFile("../../data/models/titanic_v090.xgb", false)
+	model, err := leaves.XGEnsembleFromFile(path.Join(os.Getenv("PROJECT_PATH"), "data", "models", "titanic_v090.xgb"), false)
 	if err != nil {
 		panic(err)
 	}

@@ -4,13 +4,16 @@
 
 TODO: chart of calls like. coroutine -> Go serialize -> Go call -> Target ML framework receives call -> Target ML framework processing -> Target ML returns result to Go -> Go Deserialize
 
-- [x] go-featureprocessing - unixsocket - python xgb
 - [ ] flatbuffers - unixsocket - python flatbuffers - sklearn - xgb
 - [ ] json - unixsocket - python rapidjson - sklearn - xgb
 - [ ] json - http - localhost - python rapidjson - sklearn - xgb
 - [ ] grpc - tcp - python - sklearn - xgb
 - [ ] go-featureprocessing - cgo - xgb
-- [ ] go-featureprocessing - leaves
+
+```
+BenchmarkXGB_Python_UDS_RawBytes_NewConnection         40212                274032 ns/op
+BenchmarkXGB_Leaves                                 25910788                   418 ns/op
+```
 
 ## Some numbers for reference
 
