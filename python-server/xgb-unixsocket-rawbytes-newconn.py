@@ -26,7 +26,7 @@ with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
     sock.listen()
 
     while True:
-        conn, _addr = sock.accept()
+        conn, _ = sock.accept()
 
         data = conn.recv(BUFFER_BYTES)
         if data == b'':
