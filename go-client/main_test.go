@@ -25,7 +25,7 @@ func predictRawBytes(w io.Writer, r io.Reader, features []float32) (float32, err
 	return prediction, nil
 }
 
-func benchmarkUNIXSocketRawBytesNewConn(b *testing.B, socketpathin string) {
+func benchmarkUDSRawBytesNewConn(b *testing.B, socketpathin string) {
 	addr, err := net.ResolveUnixAddr("unix", socketpathin)
 	if err != nil {
 		panic(err)
@@ -47,9 +47,9 @@ func benchmarkUNIXSocketRawBytesNewConn(b *testing.B, socketpathin string) {
 	}
 }
 
-func BenchmarkXGB_Python_UNIXsocket_RawBytes_NewConnection(b *testing.B) {
+func BenchmarkXGB_Python_UDS_RawBytes_NewConnection(b *testing.B) {
 	// start server
-	cmd := exec.Command("python3", "../python-server/xgb-unixsocket-rawbytes-newconn.py", "../sc", "../data/models/13features.xgb")
+	cmd := exec.Command("python3", "../python-xgb-uds-raw/main.py", "../sc", "../data/models/13features.xgb")
 	cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
 	if err := cmd.Start(); err != nil {
 		panic(err)
@@ -63,5 +63,5 @@ func BenchmarkXGB_Python_UNIXsocket_RawBytes_NewConnection(b *testing.B) {
 	defer syscall.Kill(-pgid, 15) // kill server
 
 	time.Sleep(1 * time.Second)
-	benchmarkUNIXSocketRawBytesNewConn(b, "../sc")
+	benchmarkUDSRawBytesNewConn(b, "../sc")
 }
