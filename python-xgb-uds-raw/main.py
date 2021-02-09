@@ -8,17 +8,14 @@ import numpy as np
 
 SOCKET_PATH = sys.argv[1]
 MODEL_PATH = sys.argv[2]
-N_FEATURES = 13
-BUFFER_BYTES = 512
-
-if os.path.exists(SOCKET_PATH):
-    os.remove(SOCKET_PATH)
+N_FEATURES = 12
+BUFFER_BYTES = 1024
 
 # https://man7.org/linux/man-pages/man2/socket.2.html
 # https://man7.org/linux/man-pages/man7/unix.7.html
 
-bst = xgb.Booster({'nthread': 4})
-bst.load_model(MODEL_PATH)
+clf = xgb.XGBModel(**{'objective':'binary:logistic', 'n_estimators':10})
+clf.load_model(MODEL_PATH)
 
 with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
     sock.bind(SOCKET_PATH)
@@ -31,12 +28,13 @@ with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
         if data == b'':
             raise RuntimeError("socket is broken, recv 0 bytes buffer")
 
-        features = struct.unpack("f" * N_FEATURES, data)
+        # f = float32
+        # d = float64
+        features = struct.unpack("d" * N_FEATURES, data)
         features = np.array(features).reshape((1, N_FEATURES))
 
-        dmatrix = xgb.DMatrix(features)
-
-        prediction = bst.predict(dmatrix)
-        conn.send(struct.pack("f", prediction[0]))
+        prediction = clf.predict(features)
+        
+        conn.send(struct.pack("d", prediction[0]))
 
         conn.close()

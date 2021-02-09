@@ -1,0 +1,10 @@
+{
+    "PClass_identity": {},
+    "Sex_onehot": {"Mapping": {"male": 0, "female": 1}},
+    "Age_minmax": {"Min": 0, "Max": 80},
+    "SibSp_quantile": {"Quantiles": [0, 1, 2, 3, 4, 5]},
+    "Parch_identity": {},
+    "Fare_standard": {"Mean": 50, "STD": 100},
+    "Cabin_ordinal": {"Mapping": {"C85": 1, "C123": 2}},
+    "Embarked_onehot": {"Mapping": {"S": 0, "C": 1, "Q": 2, "None": 3}} 
+ }
