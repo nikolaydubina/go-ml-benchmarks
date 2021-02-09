@@ -2,9 +2,9 @@ import socket
 import os
 import struct
 import sys
+import time
 import xgboost as xgb
 import numpy as np
-import time
 
 SOCKET_IN_PATH = sys.argv[1]
 MODEL_PATH = sys.argv[2]
