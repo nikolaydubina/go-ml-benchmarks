@@ -6,14 +6,14 @@ import time
 import xgboost as xgb
 import numpy as np
 
-SOCKET_IN_PATH = sys.argv[1]
+SOCKET_PATH = sys.argv[1]
 MODEL_PATH = sys.argv[2]
 
 N_FEATURES = 13
 BUFFER_BYTES = 512
 
-if os.path.exists(SOCKET_IN_PATH):
-    os.remove(SOCKET_IN_PATH)
+if os.path.exists(SOCKET_PATH):
+    os.remove(SOCKET_PATH)
 
 # https://man7.org/linux/man-pages/man2/socket.2.html
 # https://man7.org/linux/man-pages/man7/unix.7.html
@@ -22,7 +22,7 @@ bst = xgb.Booster({'nthread': 4})
 bst.load_model(MODEL_PATH)
 
 with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
-    sock.bind(SOCKET_IN_PATH)
+    sock.bind(SOCKET_PATH)
     sock.listen()
 
     while True:
