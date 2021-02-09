@@ -8,6 +8,7 @@ TODO: chart of calls like. coroutine -> Go serialize -> Go call -> Target ML fra
 - [ ] flatbuffers - unixsocket - python flatbuffers - sklearn - xgb
 - [ ] json - unixsocket - python rapidjson - sklearn - xgb
 - [ ] json - http - localhost - python rapidjson - sklearn - xgb
+- [ ] grpc - tcp - python - sklearn - xgb
 - [ ] go-featureprocessing - cgo - xgb
 - [ ] go-featureprocessing - leaves
 
