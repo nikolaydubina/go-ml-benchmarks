@@ -8,7 +8,6 @@ import numpy as np
 
 SOCKET_PATH = sys.argv[1]
 MODEL_PATH = sys.argv[2]
-
 N_FEATURES = 13
 BUFFER_BYTES = 512
 
