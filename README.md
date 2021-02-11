@@ -3,12 +3,15 @@
 > Given I have a single struct in my Go service, how quickly can I get ML inference result?
 
 TODO: illustration of latencies breakdowns
+- [Go port of XGBoost and scikit-learn](https://github.com/dmitryikh/leaves)
+
 TODO: matrix of latencies
 
 - [ ] flatbuffers - unixsocket - python flatbuffers - sklearn - xgb
 - [ ] json - unixsocket - python rapidjson - sklearn - xgb
 - [ ] grpc - tcp - python - sklearn - xgb
 - [ ] go-featureprocessing - cgo - xgb
+- [ ] [cgo bindings fo XGBoost](https://github.com/Unity-Technologies/go-xgboost)
 
 ```
 BenchmarkXGB_GoFeatureProcessing_GoLeaves                       29178766               397 ns/op
@@ -21,7 +24,6 @@ BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB             510        
 How fast do you need to get?
 
 ```
-                       0 - C++ FlatBuffers decode
                      ...
                    200ps - 4.6GHz single cycle time
                 1ns      - L1 cache latency
@@ -61,14 +63,8 @@ How fast do you need to get?
  10s                     - AWS Cloudfront 1MB transfer time
 ```
 
-## Reference and Related Work
+## Reference
 
-Go modules
-- https://github.com/pytorch/serve
-- [Go port of XGBoost and scikit-learn](https://github.com/dmitryikh/leaves)
-- [cgo bindings fo XGBoost](https://github.com/Unity-Technologies/go-xgboost)
-
-Articles
 - [how-to article for Go leaves module](https://dev.to/blairhudson/machine-learning-microservices-python-and-xgboost-in-a-tiny-486kb-container-4on4)
 - [cgo performance](https://about.sourcegraph.com/go/gophercon-2018-adventures-in-cgo-performance/)
 - [cgo goroutines are not as performant](https://www.cockroachlabs.com/blog/the-cost-and-complexity-of-cgo/)
