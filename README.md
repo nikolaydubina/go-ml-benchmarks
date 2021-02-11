@@ -9,8 +9,8 @@ TODO: matrix of latencies
 
 - [ ] go-featureprocessing - gRPC - C++ - XGB
 - [ ] go-featureprocessing - gRPCFlatBuffers - C++ - XGB
-- [ ] gRPC - Python - sklearn - XGB
 - [ ] go-featureprocessing - cgo - XGB, https://github.com/Unity-Technologies/go-xgboost
+- [ ] gRPC - Python - sklearn - XGB
 
 ```
 BenchmarkXGB_GoFeatureProcessing_GoLeaves                       25049485               412 ns/op
