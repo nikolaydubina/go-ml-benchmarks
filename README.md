@@ -1,6 +1,6 @@
 # go-ml-benchmarks
 
-> Given I have input data for a single struct in a Go service, how quickly can I get inference result?
+> Given I have a single struct in my Go service, how quickly can I get ML inference result?
 
 TODO: illustration of latencies breakdowns
 TODO: matrix of latencies
@@ -18,7 +18,48 @@ BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB             510        
 
 ## Some numbers for reference
 
-TODO
+How fast do you need to get?
+
+```
+                       0 - C++ FlatBuffers decode
+                     ...
+                   200ps - 4.6GHz single cycle time
+                1ns      - L1 cache latency
+               10ns      - L2/L3 cache SRAM latency
+               20ns      - DDR4 CAS, first byte from memory latency
+               20ns      - C++ raw hardcoded structs access
+               80ns      - C++ FlatBuffers decode/traverse/dealloc
+              100ns      - go-featureprocessing typical processing
+              150ns      - PCIe bus latency
+              171ns      - Go cgo call boundary, 2015
+              200ns      - some High Frequency Trading FPGA claims
+ ---------->  400ns      - gofeatureprocessing + leaves
+              800ns      - Go Protocol Buffers Marshal
+              837ns      - Go json-iterator/go json decode
+           1µs           - Go Protocol Buffers Unmarshal
+           1µs           - High Frequency Trading FPGA
+           3µs           - Go JSON Marshal
+           7µs           - Go JSON Unmarshal
+           9µs           - Go XML Marshal
+          10µs           - PCIe/NVLink startup time
+          17µs           - Python JSON encode or decode times
+          30µs           - UNIX domain socket, eventfd, fifo pipes latency
+          30µs           - Go XML Unmarshal
+         100µs           - Redis intrinsic latency
+         100µs           - AWS DynamoDB + DAX
+         100µs           - KDB+ queries
+         100µs           - High Frequency Trading direct market access range
+         200µs           - 1GB/s network air latency
+         200µs           - Go garbage collector latency 2018
+         500µs           - NGINX/Kong added latency
+     10ms                - AWS DynamoDB
+     10ms                - WIFI6 "air" latency
+     15ms                - AWS Sagemaker latency
+     30ms                - 5G "air" latency
+    100ms                - typical roundtrip from mobile to backend
+    200ms                - AWS RDS MySQL/PostgreSQL or AWS Aurora
+ 10s                     - AWS Cloudfront 1MB transfer time
+```
 
 ## Reference and Related Work
 
