@@ -2,7 +2,8 @@
 
 > Given I have input data for a single struct in a Go service, how quickly can I get inference result?
 
-TODO: chart of calls like. coroutine -> Go serialize -> Go call -> Target ML framework receives call -> Target ML framework processing -> Target ML returns result to Go -> Go Deserialize
+TODO: illustration of latencies breakdowns
+TODO: matrix of latencies
 
 - [ ] flatbuffers - unixsocket - python flatbuffers - sklearn - xgb
 - [ ] json - unixsocket - python rapidjson - sklearn - xgb
@@ -10,9 +11,9 @@ TODO: chart of calls like. coroutine -> Go serialize -> Go call -> Target ML fra
 - [ ] go-featureprocessing - cgo - xgb
 
 ```
-BenchmarkXGB_Python_UDS_RawBytes_NewConnection         40212                274032 ns/op
-BenchmarkXGB_Leaves                                 25910788                   418 ns/op
-BenchmarkXGB_Python_JSON_Gunicorn_Flask_sklearn_xgb          512          23123800 ns/op
+BenchmarkXGB_gofeatureprocessing_goleaves               29092437               398 ns/op
+BenchmarkXGB_Python_UDS_RawBytes_NewConnection             52749            227066 ns/op
+BenchmarkXGB_Python_JSON_Gunicorn_Flask_sklearn_xgb          508          22985758 ns/op
 ```
 
 ## Some numbers for reference

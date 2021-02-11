@@ -4,10 +4,10 @@ init:
 	pip3 install -r python-raw-uds-xgb/requirements.txt
 	pip3 install -r python-json-gunicorn-flask-sklearn-xgb/requirements.txt
 
-bench: bench-python-raw-uds-xgb bench-xgb-leaves
+bench: bench-xgb-leaves bench-python-raw-uds-xgb bench-python-json-gunicorn-flask-sklearn-xgb
 
 bench-xgb-leaves:
-	PROJECT_PATH=$$PWD go test -bench=BenchmarkXGB_Leaves.* -benchtime=10s -cpu=1 ./...
+	PROJECT_PATH=$$PWD go test -bench=BenchmarkXGB_gofeatureprocessing_goleaves.* -benchtime=10s -cpu=1 ./...
 
 bench-python-raw-uds-xgb:
 	python3 python-raw-uds-xgb/main.py sc data/models/titanic.xgb & echo "$$!" > pids
