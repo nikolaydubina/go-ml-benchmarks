@@ -6,8 +6,6 @@ import time
 import xgboost as xgb
 import numpy as np
 
-SOCKET_PATH = sys.argv[1]
-MODEL_PATH = sys.argv[2]
 N_FEATURES = 12
 BUFFER_BYTES = 1024
 
@@ -15,10 +13,10 @@ BUFFER_BYTES = 1024
 # https://man7.org/linux/man-pages/man7/unix.7.html
 
 clf = xgb.XGBModel(**{'objective':'binary:logistic', 'n_estimators':10})
-clf.load_model(MODEL_PATH)
+clf.load_model(os.getenv("MODEL_PATH"))
 
 with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
-    sock.bind(SOCKET_PATH)
+    sock.bind(os.getenv("SOCKET_PATH"))
     sock.listen()
 
     while True:

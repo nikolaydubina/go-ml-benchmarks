@@ -14,9 +14,9 @@ TODO: matrix of latencies
 - [ ] [cgo bindings fo XGBoost](https://github.com/Unity-Technologies/go-xgboost)
 
 ```
-BenchmarkXGB_GoFeatureProcessing_GoLeaves                       29178766               397 ns/op
-BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB           53226            237207 ns/op
-BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB             510          22969569 ns/op
+BenchmarkXGB_GoFeatureProcessing_GoLeaves                       25049485               412 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB           54088            230235 ns/op
+BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB             501          22995328 ns/op
 ```
 
 ## Some numbers for reference
