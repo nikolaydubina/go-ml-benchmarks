@@ -1,12 +1,12 @@
 init:
 	cd go-client; go mod download
 	cd go-client; go generate ./...	
-	pip3 install -r python-xgb-uds-raw/requirements.txt
+	pip3 install -r python-raw-uds-xgb/requirements.txt
 
-bench: bench-python-xgb-uds-raw bench-xgb-leaves
+bench: bench-python-raw-uds-xgb bench-xgb-leaves
 
-bench-python-xgb-uds-raw: clean
-	python3 python-xgb-uds-raw/main.py sc data/models/titanic.xgb & echo "$$!" > pids
+bench-python-raw-uds-xgb: clean
+	python3 python-raw-uds-xgb/main.py sc data/models/titanic.xgb & echo "$$!" > pids
 	sleep 3
 	PROJECT_PATH=$$PWD go test -bench=BenchmarkXGB_Python_UDS_RawBytes_NewConnection -benchtime=10s -cpu=1 ./...
 
