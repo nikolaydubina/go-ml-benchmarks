@@ -19,6 +19,12 @@ BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB           54088        
 BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB             501          22995328 ns/op
 ```
 
+## Dataset and Model
+
+We are using here classic [Titanic dataset](https://www.kaggle.com/c/titanic).
+It contains numerical and categorical features which makes it representative of a typical scenario.
+Data as well notebook that trains model and preprocessor is available in /data and /notebooks respectively.
+
 ## Some numbers for reference
 
 How fast do you need to get?
