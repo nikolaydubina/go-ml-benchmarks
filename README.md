@@ -13,9 +13,9 @@ TODO: matrix of latencies
 - [ ] gRPC - Python - sklearn - XGB
 
 ```
-BenchmarkXGB_GoFeatureProcessing_GoLeaves                24181167      520 ns/op
-BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB    46510   236583 ns/op
-BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB      514 23562475 ns/op
+BenchmarkXGB_GoFeatureProcessing_GoLeaves 	               24181167	       520 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB 	   46510	    236583 ns/op
+BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB 	     514	  23562475 ns/op
 ```
 
 ## Dataset and Model

@@ -29,18 +29,13 @@ ifeq ($(UNAME), Darwin)
 	brew install protobuf
 endif
 	pip3 install -r bench-grpc-python-sklearn-xgb/requirements.txt
-	# apt install -y protobuf-compiler # for linux
 	export GO111MODULE=on
 	export PATH="$PATH:$(go env GOPATH)/bin"
 	go get google.golang.org/protobuf/cmd/protoc-gen-go google.golang.org/grpc/cmd/protoc-gen-go-grpc
 	cd bench-grpc-python-sklearn-xgb; python3 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. predictor.proto
 
 bench: leaves uds rest grpc-python
-	#cat docs/bench.out | grep Benchmark | column -t > docs/bench-clean.out
-ifeq ($(UNAME), Darwin)
-	brew install align
-	cat docs/bench.out | grep Benchmark | column -t | align > docs/bench-clean.out
-endif
+	cat docs/bench.out | grep Benchmark > docs/bench-clean.out
 
 clean:
 	jupyter nbconvert --clear-output --inplace notebooks/*.ipynb
