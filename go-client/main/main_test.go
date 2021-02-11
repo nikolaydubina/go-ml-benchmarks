@@ -99,7 +99,7 @@ func BenchmarkXGB_Python_UDS_RawBytes_NewConnection(b *testing.B) {
 	benchmarkUDSRawBytesNewConn(b, path.Join(os.Getenv("PROJECT_PATH"), "sc"))
 }
 
-func BenchmarkXGB_gofeatureprocessing_goleaves(b *testing.B) {
+func BenchmarkXGB_GoFeatureProcessing_GoLeaves(b *testing.B) {
 	// PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
 	// 904,1,"Snyder, Mrs. John Pillsbury (Nelle Stevenson)",female,23,1,0,21228,82.2667,B45,S
 	sample := Passenger{

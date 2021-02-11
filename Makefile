@@ -7,7 +7,7 @@ init:
 bench: bench-xgb-leaves bench-python-raw-uds-xgb bench-python-json-gunicorn-flask-sklearn-xgb
 
 bench-xgb-leaves:
-	PROJECT_PATH=$$PWD go test -bench=BenchmarkXGB_gofeatureprocessing_goleaves.* -benchtime=10s -cpu=1 ./...
+	PROJECT_PATH=$$PWD go test -bench=BenchmarkXGB_GoFeatureProcessing_GoLeaves -benchtime=10s -cpu=1 ./...
 
 bench-python-raw-uds-xgb:
 	python3 python-raw-uds-xgb/main.py sc data/models/titanic.xgb & echo "$$!" > pids

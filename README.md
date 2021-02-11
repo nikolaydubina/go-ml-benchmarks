@@ -11,7 +11,7 @@ TODO: matrix of latencies
 - [ ] go-featureprocessing - cgo - xgb
 
 ```
-BenchmarkXGB_gofeatureprocessing_goleaves               29092437               398 ns/op
+BenchmarkXGB_GoFeatureProcessing_GoLeaves               29092437               398 ns/op
 BenchmarkXGB_Python_UDS_RawBytes_NewConnection             52749            227066 ns/op
 BenchmarkXGB_Python_JSON_Gunicorn_Flask_sklearn_xgb          508          22985758 ns/op
 ```
