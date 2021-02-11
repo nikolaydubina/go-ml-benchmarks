@@ -1,0 +1,5 @@
+xgboost>=1.3.3
+numpy
+flask
+sklearn
+gunicorn

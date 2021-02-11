@@ -1,4 +1,5 @@
 .vscode
 .gotest
 */.ipynb_checkpoints/*
+*/__pycache__/*
 pids

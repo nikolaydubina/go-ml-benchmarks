@@ -6,13 +6,13 @@ TODO: chart of calls like. coroutine -> Go serialize -> Go call -> Target ML fra
 
 - [ ] flatbuffers - unixsocket - python flatbuffers - sklearn - xgb
 - [ ] json - unixsocket - python rapidjson - sklearn - xgb
-- [ ] json - http - localhost - python rapidjson - sklearn - xgb
 - [ ] grpc - tcp - python - sklearn - xgb
 - [ ] go-featureprocessing - cgo - xgb
 
 ```
 BenchmarkXGB_Python_UDS_RawBytes_NewConnection         40212                274032 ns/op
 BenchmarkXGB_Leaves                                 25910788                   418 ns/op
+BenchmarkXGB_Python_JSON_Gunicorn_Flask_sklearn_xgb          512          23123800 ns/op
 ```
 
 ## Some numbers for reference
