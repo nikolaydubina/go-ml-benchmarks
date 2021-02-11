@@ -33,6 +33,44 @@ type Passenger struct {
 	Embarked    string  `json:"Embarked" feature:"onehot"`
 }
 
+func BenchmarkXGB_GoFeatureProcessing_GoLeaves(b *testing.B) {
+	// PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+	// 904,1,"Snyder, Mrs. John Pillsbury (Nelle Stevenson)",female,23,1,0,21228,82.2667,B45,S
+	sample := Passenger{
+		PassengerID: 904,
+		PClass:      1,
+		Name:        "Snyder, Mrs. John Pillsbury (Nelle Stevenson)",
+		Sex:         "female",
+		Age:         23,
+		SibSp:       1,
+		Parch:       0,
+		Ticket:      "A/B 21228",
+		Fare:        82.2667,
+		Cabin:       "B45",
+		Embarked:    "S",
+	}
+
+	var fp PassengerFeatureTransformer
+	config, err := ioutil.ReadFile(path.Join(os.Getenv("PROJECT_PATH"), "data", "models", "go-featureprocessor.json"))
+	if err != nil {
+		panic(err)
+	}
+	if err := json.Unmarshal(config, &fp); err != nil {
+		panic(err)
+	}
+
+	model, err := leaves.XGEnsembleFromFile(path.Join(os.Getenv("PROJECT_PATH"), "data", "models", "titanic_v090.xgb"), false)
+	if err != nil {
+		panic(err)
+	}
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		features := fp.Transform(&sample)
+		model.PredictSingle(features, 0)
+	}
+}
+
 // predictRawBytes uses raw floats encoding
 func predictRawBytes(w io.Writer, r io.Reader, features []float64) (float64, error) {
 	if err := binary.Write(w, binary.LittleEndian, features); err != nil {
@@ -95,46 +133,8 @@ func benchmarkUDSRawBytesNewConn(b *testing.B, socketpathin string) {
 	}
 }
 
-func BenchmarkXGB_Python_UDS_RawBytes_NewConnection(b *testing.B) {
+func BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB(b *testing.B) {
 	benchmarkUDSRawBytesNewConn(b, path.Join(os.Getenv("PROJECT_PATH"), "sc"))
-}
-
-func BenchmarkXGB_GoFeatureProcessing_GoLeaves(b *testing.B) {
-	// PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
-	// 904,1,"Snyder, Mrs. John Pillsbury (Nelle Stevenson)",female,23,1,0,21228,82.2667,B45,S
-	sample := Passenger{
-		PassengerID: 904,
-		PClass:      1,
-		Name:        "Snyder, Mrs. John Pillsbury (Nelle Stevenson)",
-		Sex:         "female",
-		Age:         23,
-		SibSp:       1,
-		Parch:       0,
-		Ticket:      "A/B 21228",
-		Fare:        82.2667,
-		Cabin:       "B45",
-		Embarked:    "S",
-	}
-
-	var fp PassengerFeatureTransformer
-	config, err := ioutil.ReadFile(path.Join(os.Getenv("PROJECT_PATH"), "data", "models", "go-featureprocessor.json"))
-	if err != nil {
-		panic(err)
-	}
-	if err := json.Unmarshal(config, &fp); err != nil {
-		panic(err)
-	}
-
-	model, err := leaves.XGEnsembleFromFile(path.Join(os.Getenv("PROJECT_PATH"), "data", "models", "titanic_v090.xgb"), false)
-	if err != nil {
-		panic(err)
-	}
-
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		features := fp.Transform(&sample)
-		model.PredictSingle(features, 0)
-	}
 }
 
 func benchmarkRestJSON(b *testing.B) {
@@ -198,6 +198,6 @@ func benchmarkRestJSON(b *testing.B) {
 	}
 }
 
-func BenchmarkXGB_Python_JSON_Gunicorn_Flask_sklearn_xgb(b *testing.B) {
+func BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB(b *testing.B) {
 	benchmarkRestJSON(b)
 }
