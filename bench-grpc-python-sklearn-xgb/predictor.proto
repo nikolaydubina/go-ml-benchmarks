@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package predictor;
+
+service Predictor {
+  rpc Predict (PredictRequest) returns (PredictResponse) {}
+}
+
+message PredictRequest {
+  int32 Survived = 1;
+  int32 PassengerId = 2;
+  string Name = 3;
+  double Pclass = 4;
+  string Sex = 5;
+  double Age = 6;
+  double SibSp = 7;
+  double Parch = 8;
+  string Ticket = 9;
+  double Fare = 10;
+  string Cabin = 11;
+  string Embarked = 12;
+}
+
+message PredictResponse {
+  double prediction = 1;
+}

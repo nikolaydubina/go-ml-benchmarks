@@ -1,0 +1,15 @@
+goos: darwin
+goarch: amd64
+BenchmarkXGB_GoFeatureProcessing_GoLeaves 	24181167	       520 ns/op
+PASS
+ok  	_/Users/nikolaydubina/Workspace/go-ml-benchmarks/go-client/main	13.771s
+goos: darwin
+goarch: amd64
+BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB 	   46510	    236583 ns/op
+PASS
+ok  	_/Users/nikolaydubina/Workspace/go-ml-benchmarks/go-client/main	13.731s
+goos: darwin
+goarch: amd64
+BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB 	     514	  23562475 ns/op
+PASS
+ok  	_/Users/nikolaydubina/Workspace/go-ml-benchmarks/go-client/main	14.609s
