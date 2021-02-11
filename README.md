@@ -1,6 +1,6 @@
 # go-ml-benchmarks
 
-> Given I have a single struct in my Go service, how quickly can I get ML inference result?
+> Given a single struct in a Go service, how quickly can be done machine learning inference for it?
 
 TODO: illustration of latencies breakdowns
 - [Go port of XGBoost and scikit-learn](https://github.com/dmitryikh/leaves)
@@ -20,9 +20,9 @@ BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB             501        
 
 ## Dataset and Model
 
-We are using here classic [Titanic dataset](https://www.kaggle.com/c/titanic).
-It contains numerical and categorical features which makes it representative of a typical scenario.
-Data as well notebook that trains model and preprocessor is available in /data and /notebooks respectively.
+We are using classic [Titanic dataset](https://www.kaggle.com/c/titanic).
+It contains numerical and categorical features thus it should be representative of a typical scenario.
+Data and notebooks, that train model and preprocessor, are available in /data and /notebooks respectively.
 
 ## Some numbers for reference
 
