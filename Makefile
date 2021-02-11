@@ -24,4 +24,5 @@ rest:
 	-pkill -f gunicorn
 
 clean:
+	jupyter nbconvert --clear-output --inplace notebooks/*.ipynb
 	-pkill -f gunicorn
