@@ -7,11 +7,10 @@ TODO: illustration of latencies breakdowns
 
 TODO: matrix of latencies
 
-- [ ] flatbuffers - unixsocket - python flatbuffers - sklearn - xgb
-- [ ] json - unixsocket - python rapidjson - sklearn - xgb
-- [ ] grpc - tcp - python - sklearn - xgb
-- [ ] go-featureprocessing - cgo - xgb
-- [ ] [cgo bindings fo XGBoost](https://github.com/Unity-Technologies/go-xgboost)
+- [ ] go-featureprocessing - gRPC - C++ - XGB
+- [ ] go-featureprocessing - gRPCFlatBuffers - C++ - XGB
+- [ ] gRPC - Python - sklearn - XGB
+- [ ] go-featureprocessing - cgo - XGB, https://github.com/Unity-Technologies/go-xgboost
 
 ```
 BenchmarkXGB_GoFeatureProcessing_GoLeaves                       25049485               412 ns/op
