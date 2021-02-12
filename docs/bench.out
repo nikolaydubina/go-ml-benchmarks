@@ -1,15 +1,21 @@
 goos: darwin
 goarch: amd64
-BenchmarkXGB_GoFeatureProcessing_GoLeaves 	24181167	       520 ns/op
+pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
+BenchmarkXGB_GoFeatureProcessing_GoLeaves 	29799662	       405 ns/op
 PASS
-ok  	_/Users/nikolaydubina/Workspace/go-ml-benchmarks/go-client/main	13.771s
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	12.618s
+?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
 goos: darwin
 goarch: amd64
-BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB 	   46510	    236583 ns/op
+pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
+BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB 	   49024	    245266 ns/op
 PASS
-ok  	_/Users/nikolaydubina/Workspace/go-ml-benchmarks/go-client/main	13.731s
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	14.647s
+?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
 goos: darwin
 goarch: amd64
-BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB 	     514	  23562475 ns/op
+pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
+BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB 	     516	  23749409 ns/op
 PASS
-ok  	_/Users/nikolaydubina/Workspace/go-ml-benchmarks/go-client/main	14.609s
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	14.748s
+?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]

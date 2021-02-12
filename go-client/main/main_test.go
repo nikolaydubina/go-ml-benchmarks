@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"encoding/binary"
 	"encoding/json"
 	"fmt"
@@ -10,32 +11,15 @@ import (
 	"net"
 	"net/http"
 	"os"
-	"path"
 	"testing"
 
 	"github.com/dmitryikh/leaves"
+	"google.golang.org/grpc"
+
+	pb "github.com/nikolaydubina/go-ml-benchmarks/go-client/proto"
 )
 
-//go:generate go run github.com/nikolaydubina/go-featureprocessing/cmd/generate -struct=Passenger
-
-type Passenger struct {
-	Survived    int     `json:"Survived"`
-	PassengerID int     `json:"PassengerId"`
-	Name        string  `json:"Name"`
-	PClass      float64 `json:"Pclass" feature:"identity"`
-	Sex         string  `json:"Sex" feature:"onehot"`
-	Age         float64 `json:"Age" feature:"minmax"`
-	SibSp       float64 `json:"SibSp" feature:"quantile"`
-	Parch       float64 `json:"Parch" feature:"identity"`
-	Ticket      string  `json:"Ticket"`
-	Fare        float64 `json:"Fare" feature:"standard"`
-	Cabin       string  `json:"Cabin" feature:"ordinal"`
-	Embarked    string  `json:"Embarked" feature:"onehot"`
-}
-
 func BenchmarkXGB_GoFeatureProcessing_GoLeaves(b *testing.B) {
-	// PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
-	// 904,1,"Snyder, Mrs. John Pillsbury (Nelle Stevenson)",female,23,1,0,21228,82.2667,B45,S
 	sample := Passenger{
 		PassengerID: 904,
 		PClass:      1,
@@ -51,7 +35,7 @@ func BenchmarkXGB_GoFeatureProcessing_GoLeaves(b *testing.B) {
 	}
 
 	var fp PassengerFeatureTransformer
-	config, err := ioutil.ReadFile(path.Join(os.Getenv("PROJECT_PATH"), "data", "models", "go-featureprocessor.json"))
+	config, err := ioutil.ReadFile(os.Getenv("PREPROCESSOR_PATH"))
 	if err != nil {
 		panic(err)
 	}
@@ -59,7 +43,7 @@ func BenchmarkXGB_GoFeatureProcessing_GoLeaves(b *testing.B) {
 		panic(err)
 	}
 
-	model, err := leaves.XGEnsembleFromFile(path.Join(os.Getenv("PROJECT_PATH"), "data", "models", "titanic_v090.xgb"), false)
+	model, err := leaves.XGEnsembleFromFile(os.Getenv("MODEL_PATH"), false)
 	if err != nil {
 		panic(err)
 	}
@@ -85,9 +69,7 @@ func predictRawBytes(w io.Writer, r io.Reader, features []float64) (float64, err
 	return prediction, nil
 }
 
-func benchmarkUDSRawBytesNewConn(b *testing.B, socketpathin string) {
-	// PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
-	// 904,1,"Snyder, Mrs. John Pillsbury (Nelle Stevenson)",female,23,1,0,21228,82.2667,B45,S
+func BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB(b *testing.B) {
 	sample := Passenger{
 		PassengerID: 904,
 		PClass:      1,
@@ -103,7 +85,7 @@ func benchmarkUDSRawBytesNewConn(b *testing.B, socketpathin string) {
 	}
 
 	var fp PassengerFeatureTransformer
-	config, err := ioutil.ReadFile("../../data/models/go-featureprocessor.json")
+	config, err := ioutil.ReadFile(os.Getenv("PREPROCESSOR_PATH"))
 	if err != nil {
 		panic(err)
 	}
@@ -111,7 +93,7 @@ func benchmarkUDSRawBytesNewConn(b *testing.B, socketpathin string) {
 		panic(err)
 	}
 
-	addr, err := net.ResolveUnixAddr("unix", socketpathin)
+	addr, err := net.ResolveUnixAddr("unix", os.Getenv("SOCKET_PATH"))
 	if err != nil {
 		panic(err)
 	}
@@ -133,13 +115,54 @@ func benchmarkUDSRawBytesNewConn(b *testing.B, socketpathin string) {
 	}
 }
 
-func BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB(b *testing.B) {
-	benchmarkUDSRawBytesNewConn(b, path.Join(os.Getenv("PROJECT_PATH"), "sc"))
+func BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB(b *testing.B) {
+	sample := Passenger{
+		PassengerID: 904,
+		PClass:      1,
+		Name:        "Snyder, Mrs. John Pillsbury (Nelle Stevenson)",
+		Sex:         "female",
+		Age:         23,
+		SibSp:       1,
+		Parch:       0,
+		Ticket:      "A/B 21228",
+		Fare:        82.2667,
+		Cabin:       "B45",
+		Embarked:    "S",
+	}
+
+	conn, err := grpc.Dial("unix:///tmp/test.sock", grpc.WithInsecure(), grpc.WithBlock())
+	if err != nil {
+		panic(err)
+	}
+	defer conn.Close()
+	client := pb.NewPredictorClient(conn)
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		response, err := client.Predict(context.Background(), &pb.PredictRequest{
+			Survived:    int32(sample.Survived),
+			PassengerId: int32(sample.PassengerID),
+			Name:        sample.Name,
+			Pclass:      sample.PClass,
+			Sex:         sample.Sex,
+			Age:         sample.Age,
+			SibSp:       sample.SibSp,
+			Parch:       sample.Parch,
+			Ticket:      sample.Ticket,
+			Fare:        sample.Fare,
+			Cabin:       sample.Cabin,
+			Embarked:    sample.Embarked,
+		})
+		if response == nil || err != nil {
+			panic(err)
+		}
+		if response.Prediction == 0 {
+			panic("prediction is 0")
+		}
+	}
 }
 
-func benchmarkRestJSON(b *testing.B) {
-	// PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
-	// 904,1,"Snyder, Mrs. John Pillsbury (Nelle Stevenson)",female,23,1,0,21228,82.2667,B45,S
+func BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB(b *testing.B) {
 	sample := Passenger{
 		PassengerID: 904,
 		PClass:      1,
@@ -155,7 +178,7 @@ func benchmarkRestJSON(b *testing.B) {
 	}
 
 	var fp PassengerFeatureTransformer
-	config, err := ioutil.ReadFile("../../data/models/go-featureprocessor.json")
+	config, err := ioutil.ReadFile(os.Getenv("PREPROCESSOR_PATH"))
 	if err != nil {
 		panic(err)
 	}
@@ -196,8 +219,4 @@ func benchmarkRestJSON(b *testing.B) {
 			panic("prediction is 0")
 		}
 	}
-}
-
-func BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB(b *testing.B) {
-	benchmarkRestJSON(b)
 }

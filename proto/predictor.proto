@@ -2,8 +2,11 @@ syntax = "proto3";
 
 package predictor;
 
+option go_package = "github.com/nikolaydubina/go-ml-benchmarks/go-client/proto";
+
 service Predictor {
   rpc Predict (PredictRequest) returns (PredictResponse) {}
+  rpc PredictProcessed (PredictProcessedRequest) returns (PredictResponse) {}
 }
 
 message PredictRequest {
@@ -21,6 +24,10 @@ message PredictRequest {
   string Embarked = 12;
 }
 
+message PredictProcessedRequest {
+  repeated double Features = 1;
+}
+
 message PredictResponse {
-  double prediction = 1;
+  double Prediction = 1;
 }

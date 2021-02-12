@@ -5,12 +5,13 @@ import xgboost as xgb
 import pandas as pd
 import logging
 import grpc
-import predictor_pb2
-import predictor_pb2_grpc
+
+import proto.predictor_pb2_grpc
+import proto.predictor_pb2
 
 from concurrent import futures
 
-class Predictor(predictor_pb2_grpc.GreeterServicer):
+class Predictor(proto.predictor_pb2_grpc.PredictorServicer):
 
     def __init__(self):
         self.preprocessor = joblib.load(os.getenv('PREPROCESSOR_PATH'))
@@ -48,12 +49,12 @@ class Predictor(predictor_pb2_grpc.GreeterServicer):
         }, ignore_index=True)
 
         prediction = self.clf.predict(self.preprocessor.transform(features))
-        return predictor_pb2_grpc.PredictResponse(prediction=prediction[0])
+        return proto.predictor_pb2.PredictResponse(Prediction=prediction[0])
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    predictor_pb2_grpc.add_PredictorServicer_to_server(Predictor(), server)
-    server.add_insecure_port(f'unix://var/run/test.sock')
+    proto.predictor_pb2_grpc.add_PredictorServicer_to_server(Predictor(), server)
+    server.add_insecure_port(f'unix:///tmp/test.sock')
     server.start()
     server.wait_for_termination()
 
