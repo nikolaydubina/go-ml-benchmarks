@@ -1,6 +1,6 @@
 # go-ml-benchmarks
 
-> Given a single struct in a Go service, how quickly can be done machine learning inference for it?
+> Given a single raw sample in a Go service, how quickly can I get machine learning inference for it?
 
 TODO: illustration of latencies breakdowns
 - [Go port of XGBoost and scikit-learn](https://github.com/dmitryikh/leaves)
