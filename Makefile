@@ -12,8 +12,8 @@ leaves:
 		go test -bench=BenchmarkXGB_GoFeatureProcessing_GoLeaves -benchtime=10s -cpu=1 ./... | tee -a $(PWD)/docs/bench.out
 
 uds:
-	pip3 install -r bench-uds-raw-python-xgb/requirements.txt
-	cd bench-uds-raw-python-xgb; \
+	pip3 install -r bench-gofeatureprocessing-uds-raw-python-xgb/requirements.txt
+	cd bench-gofeatureprocessing-uds-raw-python-xgb; \
 		MODEL_PATH=$(PWD)/data/models/titanic.xgb \
 		SOCKET_PATH=$(PWD)/sc \
 		python3 main.py & echo "$$!" > pids
@@ -23,7 +23,7 @@ uds:
 		PREPROCESSOR_PATH=$(PWD)/data/models/go-featureprocessor.json \
 		SOCKET_PATH=$(PWD)/sc \
 		go test -bench=BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB -benchtime=10s -cpu=1 ./... | tee -a $(PWD)/docs/bench.out
-	cd bench-uds-raw-python-xgb; kill -9 $$(cat pids); rm pids
+	cd bench-gofeatureprocessing-uds-raw-python-xgb; kill -9 $$(cat pids); rm pids
 
 rest:
 	cd bench-http-json-python-gunicorn-flask-sklearn-xgb; pip3 install -r requirements.txt
@@ -75,4 +75,4 @@ clean:
 	-pkill -f gunicorn
 	-rm sc
 	-rm docs/bench.out
-	-cd bench-uds-raw-python-xgb; kill -9 $$(cat pids); rm pids
+	-cd bench-gofeatureprocessing-uds-raw-python-xgb; kill -9 $$(cat pids); rm pids
