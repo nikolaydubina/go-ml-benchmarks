@@ -12,11 +12,11 @@ TODO: matrix of latencies
 - [ ] go-featureprocessing - cgo - XGB, https://github.com/Unity-Technologies/go-xgboost
 
 ```
-BenchmarkXGB_GoFeatureProcessing_GoLeaves 	               30275870	       408 ns/op
-BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB 	   45306	    291987 ns/op
-BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB 	     468	  24731969 ns/op
-BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB 	                       526	  26205661 ns/op
-
+BenchmarkXGB_GoFeatureProcessing_GoLeaves 	               29659258	       433 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB 	   43141	    266845 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB 	         21777	    570397 ns/op
+BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB 	                       542	  22913895 ns/op
+BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB 	     469	  23708045 ns/op
 ```
 
 ## Dataset and Model

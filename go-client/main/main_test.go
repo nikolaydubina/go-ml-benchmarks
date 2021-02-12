@@ -134,6 +134,39 @@ func BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB(b *testing.B) {
 	}
 }
 
+func BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB(b *testing.B) {
+	var fp PassengerFeatureTransformer
+	config, err := ioutil.ReadFile(os.Getenv("PREPROCESSOR_PATH"))
+	if err != nil {
+		panic(err)
+	}
+	if err := json.Unmarshal(config, &fp); err != nil {
+		panic(err)
+	}
+
+	conn, err := grpc.Dial("unix:///tmp/test.sock", grpc.WithInsecure(), grpc.WithBlock())
+	if err != nil {
+		panic(err)
+	}
+	defer conn.Close()
+	client := pb.NewPredictorClient(conn)
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		features := fp.Transform(&sample)
+
+		response, err := client.PredictProcessed(context.Background(), &pb.PredictProcessedRequest{
+			Features: features,
+		})
+		if response == nil || err != nil {
+			panic(err)
+		}
+		if response.Prediction == 0 {
+			panic("prediction is 0")
+		}
+	}
+}
+
 func BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB(b *testing.B) {
 	var fp PassengerFeatureTransformer
 	config, err := ioutil.ReadFile(os.Getenv("PREPROCESSOR_PATH"))

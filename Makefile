@@ -53,10 +53,10 @@ endif
 
 init-grpc-python:
 	pip3 install grpcio grpcio-tools
-	python3 -m grpc_tools.protoc -I. --python_out=bench-uds-grpc-python-sklearn-xgb --grpc_python_out=bench-uds-grpc-python-sklearn-xgb proto/predictor.proto
+	python3 -m grpc_tools.protoc -I. --python_out=bench-uds-grpc-python-xgb --grpc_python_out=bench-uds-grpc-python-xgb proto/predictor.proto
 
-grpc-python: init-grpc-go init-grpc-python
-	cd bench-uds-grpc-python-sklearn-xgb; \
+grpc-python-sklearn: init-grpc-go init-grpc-python
+	cd bench-uds-grpc-python-xgb; \
 		PREPROCESSOR_PATH=$(PWD)/data/models/titanic_preprocessor.sklearn \
 		MODEL_PATH=$(PWD)/data/models/titanic.xgb \
 		python3 main.py &
@@ -66,7 +66,19 @@ grpc-python: init-grpc-go init-grpc-python
 		go test -bench=BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB -benchtime=10s -cpu=1 ./... | tee -a $(PWD)/docs/bench.out	
 	-pkill -f Python
 
-bench: clean leaves uds rest grpc-python
+grpc-python-processed: init-grpc-go init-grpc-python
+	cd bench-uds-grpc-python-xgb; \
+		PREPROCESSOR_PATH=$(PWD)/data/models/titanic_preprocessor.sklearn \
+		MODEL_PATH=$(PWD)/data/models/titanic.xgb \
+		python3 main.py &
+	sleep 3
+	cd go-client; \
+		GO111MODULE=on \
+		PREPROCESSOR_PATH=$(PWD)/data/models/go-featureprocessor.json \
+		go test -bench=BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB -benchtime=10s -cpu=1 ./... | tee -a $(PWD)/docs/bench.out	
+	-pkill -f Python
+
+bench: clean leaves uds rest grpc-python-sklearn grpc-python-processed
 	cat docs/bench.out | grep Benchmark > docs/bench-clean.out
 
 clean:

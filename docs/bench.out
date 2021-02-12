@@ -1,28 +1,35 @@
 goos: darwin
 goarch: amd64
 pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
-BenchmarkXGB_GoFeatureProcessing_GoLeaves 	22521414	       448 ns/op
+BenchmarkXGB_GoFeatureProcessing_GoLeaves 	29659258	       433 ns/op
 PASS
-ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	10.794s
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	13.413s
 ?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
 goos: darwin
 goarch: amd64
 pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
-BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB 	   30432	    336173 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB 	   43141	    266845 ns/op
 PASS
-ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	14.375s
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	14.478s
 ?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
 goos: darwin
 goarch: amd64
 pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
-BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB 	     486	  22845151 ns/op
+BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB 	     469	  23708045 ns/op
 PASS
-ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	13.753s
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	13.885s
 ?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
 goos: darwin
 goarch: amd64
 pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
-BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB 	     480	  23373397 ns/op
+BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB 	     542	  22913895 ns/op
 PASS
-ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	13.929s
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	14.840s
+?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
+goos: darwin
+goarch: amd64
+pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
+BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB 	   21777	    570397 ns/op
+PASS
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	18.192s
 ?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]

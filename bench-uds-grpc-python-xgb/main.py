@@ -5,6 +5,7 @@ import xgboost as xgb
 import pandas as pd
 import logging
 import grpc
+import numpy as np
 
 import proto.predictor_pb2_grpc
 import proto.predictor_pb2
@@ -49,6 +50,11 @@ class Predictor(proto.predictor_pb2_grpc.PredictorServicer):
         }, ignore_index=True)
 
         prediction = self.clf.predict(self.preprocessor.transform(features))
+        return proto.predictor_pb2.PredictResponse(Prediction=prediction[0])
+
+    def PredictProcessed(self, request, context):
+        features = np.array(request.Features).reshape((1, len(request.Features)))
+        prediction = self.clf.predict(features)
         return proto.predictor_pb2.PredictResponse(Prediction=prediction[0])
 
 def serve():
