@@ -57,19 +57,22 @@ init-grpc-python:
 
 grpc-python: init-grpc-go init-grpc-python
 	cd bench-grpc-python-sklearn-xgb; \
-		PREPROCESSOR_PATH=../data/models/titanic_preprocessor.sklearn \
-		MODEL_PATH=../data/models/titanic.xgb \
+		PREPROCESSOR_PATH=$(PWD)/data/models/titanic_preprocessor.sklearn \
+		MODEL_PATH=$(PWD)/data/models/titanic.xgb \
 		python3 main.py &
 	sleep 3
-	cd go-client; GO111MODULE=on PROJECT_PATH=$$PWD go test -bench=BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB -benchtime=10s -cpu=1 ./... | tee -a ../docs/bench.out	
+	cd go-client; \
+		GO111MODULE=on \
+		go test -bench=BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB -benchtime=10s -cpu=1 ./... | tee -a $(PWD)/docs/bench.out	
 	-pkill -f Python
 
-bench: clean leaves uds rest
+bench: clean leaves uds rest grpc-python
 	cat docs/bench.out | grep Benchmark > docs/bench-clean.out
 
 clean:
 	jupyter nbconvert --clear-output --inplace notebooks/*.ipynb
 	-pkill -f Python
 	-pkill -f gunicorn
-	-rm docs/bench.out sc
+	-rm sc
+	-rm docs/bench.out
 	-cd bench-uds-raw-python-xgb; kill -9 $$(cat pids); rm pids

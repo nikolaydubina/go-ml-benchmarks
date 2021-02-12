@@ -1,3 +1,4 @@
-BenchmarkXGB_GoFeatureProcessing_GoLeaves 	                29799662	       405 ns/op
-BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB 	   49024	    245266 ns/op
-BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB 	     516	  23749409 ns/op
+BenchmarkXGB_GoFeatureProcessing_GoLeaves 	                30275870	       408 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB 	   45306	    291987 ns/op
+BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB 	     468	  24731969 ns/op
+BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB 	                     526	  26205661 ns/op

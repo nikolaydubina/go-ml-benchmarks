@@ -19,21 +19,21 @@ import (
 	pb "github.com/nikolaydubina/go-ml-benchmarks/go-client/proto"
 )
 
-func BenchmarkXGB_GoFeatureProcessing_GoLeaves(b *testing.B) {
-	sample := Passenger{
-		PassengerID: 904,
-		PClass:      1,
-		Name:        "Snyder, Mrs. John Pillsbury (Nelle Stevenson)",
-		Sex:         "female",
-		Age:         23,
-		SibSp:       1,
-		Parch:       0,
-		Ticket:      "A/B 21228",
-		Fare:        82.2667,
-		Cabin:       "B45",
-		Embarked:    "S",
-	}
+var sample = Passenger{
+	PassengerID: 904,
+	PClass:      1,
+	Name:        "Snyder, Mrs. John Pillsbury (Nelle Stevenson)",
+	Sex:         "female",
+	Age:         23,
+	SibSp:       1,
+	Parch:       0,
+	Ticket:      "A/B 21228",
+	Fare:        82.2667,
+	Cabin:       "B45",
+	Embarked:    "S",
+}
 
+func BenchmarkXGB_GoFeatureProcessing_GoLeaves(b *testing.B) {
 	var fp PassengerFeatureTransformer
 	config, err := ioutil.ReadFile(os.Getenv("PREPROCESSOR_PATH"))
 	if err != nil {
@@ -70,20 +70,6 @@ func predictRawBytes(w io.Writer, r io.Reader, features []float64) (float64, err
 }
 
 func BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB(b *testing.B) {
-	sample := Passenger{
-		PassengerID: 904,
-		PClass:      1,
-		Name:        "Snyder, Mrs. John Pillsbury (Nelle Stevenson)",
-		Sex:         "female",
-		Age:         23,
-		SibSp:       1,
-		Parch:       0,
-		Ticket:      "A/B 21228",
-		Fare:        82.2667,
-		Cabin:       "B45",
-		Embarked:    "S",
-	}
-
 	var fp PassengerFeatureTransformer
 	config, err := ioutil.ReadFile(os.Getenv("PREPROCESSOR_PATH"))
 	if err != nil {
@@ -116,20 +102,6 @@ func BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB(b *testing.B) {
 }
 
 func BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB(b *testing.B) {
-	sample := Passenger{
-		PassengerID: 904,
-		PClass:      1,
-		Name:        "Snyder, Mrs. John Pillsbury (Nelle Stevenson)",
-		Sex:         "female",
-		Age:         23,
-		SibSp:       1,
-		Parch:       0,
-		Ticket:      "A/B 21228",
-		Fare:        82.2667,
-		Cabin:       "B45",
-		Embarked:    "S",
-	}
-
 	conn, err := grpc.Dial("unix:///tmp/test.sock", grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
 		panic(err)
@@ -163,20 +135,6 @@ func BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB(b *testing.B) {
 }
 
 func BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB(b *testing.B) {
-	sample := Passenger{
-		PassengerID: 904,
-		PClass:      1,
-		Name:        "Snyder, Mrs. John Pillsbury (Nelle Stevenson)",
-		Sex:         "female",
-		Age:         23,
-		SibSp:       1,
-		Parch:       0,
-		Ticket:      "A/B 21228",
-		Fare:        82.2667,
-		Cabin:       "B45",
-		Embarked:    "S",
-	}
-
 	var fp PassengerFeatureTransformer
 	config, err := ioutil.ReadFile(os.Getenv("PREPROCESSOR_PATH"))
 	if err != nil {
