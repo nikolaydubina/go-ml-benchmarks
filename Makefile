@@ -53,10 +53,10 @@ endif
 
 init-grpc-python:
 	pip3 install grpcio grpcio-tools
-	python3 -m grpc_tools.protoc -I. --python_out=bench-grpc-python-sklearn-xgb --grpc_python_out=bench-grpc-python-sklearn-xgb proto/predictor.proto
+	python3 -m grpc_tools.protoc -I. --python_out=bench-uds-grpc-python-sklearn-xgb --grpc_python_out=bench-uds-grpc-python-sklearn-xgb proto/predictor.proto
 
 grpc-python: init-grpc-go init-grpc-python
-	cd bench-grpc-python-sklearn-xgb; \
+	cd bench-uds-grpc-python-sklearn-xgb; \
 		PREPROCESSOR_PATH=$(PWD)/data/models/titanic_preprocessor.sklearn \
 		MODEL_PATH=$(PWD)/data/models/titanic.xgb \
 		python3 main.py &
