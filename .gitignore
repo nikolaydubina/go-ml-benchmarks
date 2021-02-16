@@ -5,3 +5,4 @@
 */cmake/build/*
 __pycache__
 pids
+build/*

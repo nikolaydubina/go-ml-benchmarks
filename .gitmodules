@@ -1,0 +1,6 @@
+[submodule "third_party/grpc"]
+	path = third_party/grpc
+	url = https://github.com/grpc/grpc
+[submodule "third_party/xgboost"]
+	path = third_party/xgboost
+	url = https://github.com/dmlc/xgboost

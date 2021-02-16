@@ -176,7 +176,7 @@ func BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB(b *testing.B) {
 }
 
 func BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB(b *testing.B) {
-	benchmark_UDS_gRPC_Struct_XGB(b)
+	benchmark_UDS_gRPC_Processed_XGB(b)
 }
 
 func BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB(b *testing.B) {

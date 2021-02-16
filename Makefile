@@ -1,8 +1,11 @@
 PWD := $(shell echo $$PWD)
 UNAME := $(shell uname)
+MY_INSTALL_DIR := $(shell echo $$HOME/.local)
 
 init:
 	cd go-client; go mod download && go generate ./...
+	cd third_party/grpc; git submodule update --init --recursive
+	cd third_party/xgboost; git submodule update --init --recursive
 
 leaves:
 	cd go-client; \
@@ -78,9 +81,36 @@ grpc-python-processed: init-grpc-go init-grpc-python
 		go test -bench=BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB -benchtime=10s -cpu=1 ./... | tee -a $(PWD)/docs/bench.out	
 	-pkill -f Python
 
-grpc-cpp:
+cpp-grpc-lib:
+	mkdir -p $(MY_INSTALL_DIR)
+	export PATH="$$PATH:$(MY_INSTALL_DIR)/bin"
+ifeq ($(UNAME), Darwin)
+	brew install protobuf autoconf automake libtool pkg-config
+	-brew install smake
+endif
+	cd third_party/grpc; \
+		mkdir -p cmake/build; \
+		pushd cmake/build; \
+		cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=$(MY_INSTALL_DIR) ../..; \
+		make -j 4; \
+		make install; \
+		popd
+
+cpp-xgb-lib:
+	cd third_party/xgboost; \
+		mkdir -p build; \
+		cd build; \
+		cmake -DBUILD_STATIC_LIB=ON -DCMAKE_INSTALL_PREFIX=$(MY_INSTALL_DIR) ..; \
+		make install -j 4
+
+grpc-cpp-build: cpp-xgb-lib cpp-grpc-lib
+	mkdir -p bench-uds-grpc-cpp-xgb/cmake/build
+	cd bench-uds-grpc-cpp-xgb/cmake/build; \
+		cmake -DCMAKE_PREFIX_PATH=$(MY_INSTALL_DIR) ../..; \
+		make -j 4
+
+grpc-cpp: grpc-cpp-build
 	cd bench-uds-grpc-cpp-xgb; \
-		PREPROCESSOR_PATH=$(PWD)/data/models/titanic_preprocessor.sklearn \
 		MODEL_PATH=$(PWD)/data/models/titanic.xgb \
 		./cmake/build/predictor &
 	sleep 3
@@ -88,7 +118,7 @@ grpc-cpp:
 		GO111MODULE=on \
 		PREPROCESSOR_PATH=$(PWD)/data/models/go-featureprocessor.json \
 		go test -bench=BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB -benchtime=10s -cpu=1 ./... | tee -a $(PWD)/docs/bench.out	
-	-pkill -f predictor
+	pkill -f predictor
 
 bench: clean leaves uds rest grpc-python-sklearn grpc-python-processed grpc-cpp
 	cat docs/bench.out | grep Benchmark > docs/bench-clean.out
@@ -100,3 +130,6 @@ clean:
 	-rm sc
 	-rm docs/bench.out
 	-cd bench-gofeatureprocessing-uds-raw-python-xgb; kill -9 $$(cat pids); rm pids
+	-pkill -f predictor
+	-rm -rf build
+	-rm -rf bench-uds-grpc-cpp-xgb/cmake

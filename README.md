@@ -17,12 +17,12 @@ TODO: matrix of latencies
 - [ ] mxnet is called from cgo, lack official support, does not have xgboost
 
 ```
-BenchmarkXGB_GoFeatureProcessing_GoLeaves                   28497763            425 ns/op
-BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB              76980         153951 ns/op
-BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB       46983         255204 ns/op
-BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB           18637         636378 ns/op
-BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB                         513       24435199 ns/op
-BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB         474       25139241 ns/op
+BenchmarkXGB_GoFeatureProcessing_GoLeaves                   26733782          449 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB              47102       280710 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB       36494       327929 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB           18043       678858 ns/op
+BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB         466     24979949 ns/op
+BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB                         499     25486481 ns/op
 ```
 
 ## Dataset and Model
