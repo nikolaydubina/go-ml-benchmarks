@@ -7,7 +7,6 @@ TODO: illustration of latencies breakdowns
 
 TODO: matrix of latencies
 
-- [ ] go-featureprocessing - gRPC - C++ - XGB, using synchronous version https://github.com/grpc/grpc/tree/master/examples/cpp/helloworld
 - [ ] go-featureprocessing - gRPCFlatBuffers - C++ - XGB
 - [ ] go-featureprocessing - cgo - XGB, https://github.com/Unity-Technologies/go-xgboost
 - [ ] onnx-go (sklearn + XGB) https://github.com/owulveryck/onnx-go
