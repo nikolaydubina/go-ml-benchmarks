@@ -40,7 +40,7 @@ How fast do you need to get?
                80ns      - C++ FlatBuffers decode/traverse/dealloc
               100ns      - go-featureprocessing
               150ns      - PCIe bus latency
-              171ns      - Go cgo call boundary, 2015
+              171ns      - cgo call boundary, 2015
               200ns      - HFT FPGA
  ---------->  400ns      - go-featureprocessing + leaves
               475ns      - 2020 MLPerf winner recommendation inference time per sample
@@ -78,7 +78,7 @@ How fast do you need to get?
 - [cgo performance, GopherCon'18](https://about.sourcegraph.com/go/gophercon-2018-adventures-in-cgo-performance/)
 - [cgo performance, CockroachDB](https://www.cockroachlabs.com/blog/the-cost-and-complexity-of-cgo/)
 - [cgo call to CPython, Datadog](https://www.datadoghq.com/blog/engineering/cgo-and-python/)
-- [cgo call to Cpython, EuroPython'19](https://ep2019.europython.eu/talks/Zktoaai-golang-to-python/)
+- [cgo call to CPython, EuroPython'19](https://ep2019.europython.eu/talks/Zktoaai-golang-to-python/)
 - [HFT latency](https://en.wikipedia.org/wiki/Ultra-low_latency_direct_market_access)
 - [HFT FPGA latency](https://ieeexplore.ieee.org/document/6299067)
 - [HFT FPGA 200 nanoseconds, 2018](https://apnews.com/press-release/pr-businesswire/2edb1f8f12d64ab490ef0c180e648e24)
