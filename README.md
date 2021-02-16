@@ -58,6 +58,7 @@ How fast do you need to get?
      10ms                - AWS DynamoDB; WIFI6 "air" latency
      15ms                - AWS Sagemaker latency
      30ms                - 5G "air" latency
+     36ms                - San Francisco to Hong-Kong at speed of light
     100ms                - typical roundtrip from mobile to backend
     200ms                - AWS RDS MySQL/PostgreSQL; AWS Aurora
  10s                     - AWS Cloudfront 1MB transfer time
