@@ -13,7 +13,6 @@ TODO: matrix of latencies
 - [ ] cgo - onnx (sklearn + XGB) http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html
 - [ ] UDS - gRPC - C++ - onnx (sklearn + XGB) http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html
 - [ ] UDS - gRPC - Python - onnx (sklearn + XGB) http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html
-- [ ] mxnet is called from cgo, lack official support, does not have xgboost
 
 ```
 BenchmarkXGB_GoFeatureProcessing_GoLeaves                   26733782          449 ns/op
