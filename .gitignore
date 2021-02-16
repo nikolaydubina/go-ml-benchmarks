@@ -2,5 +2,6 @@
 .gotest
 */.ipynb_checkpoints/*
 */__pycache__/*
+*/cmake/build/*
 __pycache__
 pids

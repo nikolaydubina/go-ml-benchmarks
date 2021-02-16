@@ -16,14 +16,14 @@ using predictor::PredictResponse;
 using predictor::Predictor;
 
 class PredictorImpl final : public Predictor::Service {
-  Status SayHello(ServerContext* context, const PredictRequest* request, PredictResponse* reply) override {
+  Status Predict(ServerContext* context, const PredictRequest* request, PredictResponse* reply) override {
     reply->set_prediction(11.2);
     return Status::OK;
   }
 };
 
 void RunServer() {
-  std::string server_address("0.0.0.0:50051");
+  std::string server_address("unix:///tmp/test.sock");
   PredictorImpl service;
 
   grpc::EnableDefaultHealthCheckService(true);

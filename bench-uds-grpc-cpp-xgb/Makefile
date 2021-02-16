@@ -34,9 +34,9 @@ endif
 
 build:
 	mkdir -p cmake/build
-	cd cmake/build
-	cmake -DCMAKE_PREFIX_PATH=$(MY_INSTALL_DIR) ../..
-	make -j
+	cd cmake/build; \
+		cmake -DCMAKE_PREFIX_PATH=$(MY_INSTALL_DIR) ../..;
+		make -j predictor
 
 predictor: predictor.pb.o predictor.grpc.pb.o predictor.o
 	$(CXX) $^ $(LDFLAGS) -o $@
