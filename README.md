@@ -72,7 +72,7 @@ How fast do you need to get?
  10s                     - AWS Cloudfront 1MB transfer time
 ```
 
-TODO
+## Future work
 
 - [ ] onnx-go (sklearn + XGB) https://github.com/owulveryck/onnx-go it is not full implementation of ONNX, some pieces for sklearn or XGBoost may be missing
 
