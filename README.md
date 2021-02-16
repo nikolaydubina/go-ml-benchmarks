@@ -44,6 +44,7 @@ How fast do you need to get?
               171ns      - Go cgo call boundary, 2015
               200ns      - HFT FPGA
  ---------->  400ns      - go-featureprocessing + leaves
+              475ns      - 2020 MLPerf winner recommendation inference time per sample
               800ns      - Go Protocol Buffers Marshal
               837ns      - Go json-iterator/go json unmarshal
            1µs           - Go protocol buffers unmarshal
@@ -86,7 +87,8 @@ How fast do you need to get?
 - ["Evaluation of Inter-Process Communication Mechanisms"](http://pages.cs.wisc.edu/~adityav/Evaluation_of_Inter_Process_Communication_Mechanisms.pdf)
 - [UNIX local IPC latencies](http://kamalmarhubi.com/blog/2015/06/10/some-early-linux-ipc-latency-data/)
 - [Cache and DRAM latency](https://en.wikipedia.org/wiki/CPU_cache)
-- [MLCommons MLPerf benchmarks](https://github.com/mlcommons/inference)
+- [MLPerf benchmarks](https://github.com/mlcommons/inference)
+- [MLPerf benchmarks results, 2020](https://mlperf.org/inference-results-0-7)
 - [Redis latency](https://redis.io/topics/latency)
 - [Huawei WIFI6 latency](https://e.huawei.com/sg/products/enterprise-networking/wlan/wifi-6)
 - [Verizon 5G latency](https://www.verizon.com/about/our-company/5g/5g-latency)
