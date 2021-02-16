@@ -12,6 +12,7 @@ TODO: linux
 TODO: system level profiling with perf
 
 ```
+BenchmarkXGB_GoFeatureProcessing_GoLeaves_noalloc 	         34282773	         345 ns/op
 BenchmarkXGB_GoFeatureProcessing_GoLeaves                   26733782          449 ns/op
 BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB              47102       280710 ns/op
 BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB       36494       327929 ns/op

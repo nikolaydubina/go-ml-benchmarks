@@ -12,7 +12,7 @@ leaves:
 		GO111MODULE=on \
 		PREPROCESSOR_PATH=$(PWD)/data/models/go-featureprocessor.json \
 		MODEL_PATH=$(PWD)/data/models/titanic_v090.xgb \
-		go test -bench=BenchmarkXGB_GoFeatureProcessing_GoLeaves -benchtime=10s -cpu=1 ./... | tee -a $(PWD)/docs/bench.out
+		go test -bench=BenchmarkXGB_GoFeatureProcessing_GoLeaves* -benchtime=10s -cpu=1 ./... | tee -a $(PWD)/docs/bench.out
 
 uds:
 	pip3 install -r bench-gofeatureprocessing-uds-raw-python-xgb/requirements.txt

@@ -51,7 +51,37 @@ func BenchmarkXGB_GoFeatureProcessing_GoLeaves(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		features := fp.Transform(&sample)
-		model.PredictSingle(features, 0)
+		prediction := model.PredictSingle(features, 100)
+		if prediction == 0 {
+			panic("prediction is 0")
+		}
+	}
+}
+
+func BenchmarkXGB_GoFeatureProcessing_GoLeaves_noalloc(b *testing.B) {
+	var fp PassengerFeatureTransformer
+	config, err := ioutil.ReadFile(os.Getenv("PREPROCESSOR_PATH"))
+	if err != nil {
+		panic(err)
+	}
+	if err := json.Unmarshal(config, &fp); err != nil {
+		panic(err)
+	}
+
+	model, err := leaves.XGEnsembleFromFile(os.Getenv("MODEL_PATH"), false)
+	if err != nil {
+		panic(err)
+	}
+
+	features := make([]float64, 12)
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		fp.TransformInplace(features, &sample)
+		prediction := model.PredictSingle(features, 100)
+		if prediction == 0 {
+			panic("prediction is 0")
+		}
 	}
 }
 

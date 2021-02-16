@@ -40,3 +40,22 @@ BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB 	   47102	    280710 ns/op
 PASS
 ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	15.974s
 ?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/go-client/main [build failed]
+?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
+FAIL
+goos: darwin
+goarch: amd64
+pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
+BenchmarkXGB_GoFeatureProcessing_GoLeaves         	29153616	       431 ns/op
+BenchmarkXGB_GoFeatureProcessing_GoLeaves_noalloc 	34282773	       345 ns/op
+PASS
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	25.781s
+?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
+goos: darwin
+goarch: amd64
+pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
+BenchmarkXGB_GoFeatureProcessing_GoLeaves         	29103538	       415 ns/op
+BenchmarkXGB_GoFeatureProcessing_GoLeaves_noalloc 	34482543	       359 ns/op
+PASS
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	25.680s
+?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
