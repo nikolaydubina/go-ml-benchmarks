@@ -33,7 +33,6 @@ Data and notebooks to train model and preprocessor is available in /data and /no
 How fast do you need to get?
 
 ```
-                     ...
                    200ps - 4.6GHz single cycle time
                 1ns      - L1 cache latency
                10ns      - L2/L3 cache SRAM latency
