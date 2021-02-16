@@ -54,6 +54,7 @@ How fast do you need to get?
           30µs           - UNIX domain socket; eventfd; fifo pipes
          100µs           - Redis intrinsic latency; KDB+; HFT direct market access
          200µs           - 1GB/s network air latency; Go garbage collector pauses interval 2018
+         230µs           - San Francisco to San Jose at speed of light
          500µs           - NGINX/Kong added latency
      10ms                - AWS DynamoDB; WIFI6 "air" latency
      15ms                - AWS Sagemaker latency
