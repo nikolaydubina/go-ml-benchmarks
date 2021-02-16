@@ -3,8 +3,6 @@
 > Given a single raw sample in a Go service, how quickly can I get machine learning inference for it?
 
 TODO: illustration of latencies breakdowns
-- [Go port of XGBoost and scikit-learn](https://github.com/dmitryikh/leaves)
-
 TODO: matrix of latencies
 
 - [ ] cgo - go-featureprocessing - XGB, https://github.com/Unity-Technologies/go-xgboost
