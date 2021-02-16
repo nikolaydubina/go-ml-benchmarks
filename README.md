@@ -47,24 +47,17 @@ How fast do you need to get?
  ---------->  400ns      - gofeatureprocessing + leaves
               800ns      - Go Protocol Buffers Marshal
               837ns      - Go json-iterator/go json decode
-           1µs           - Go Protocol Buffers Unmarshal
-           1µs           - High Frequency Trading FPGA
+           1µs           - Go protocol buffers unmarshal; High Frequency Trading FPGA
            3µs           - Go JSON Marshal
            7µs           - Go JSON Unmarshal
            9µs           - Go XML Marshal
           10µs           - PCIe/NVLink startup time
           17µs           - Python JSON encode or decode times
-          30µs           - UNIX domain socket, eventfd, fifo pipes latency
-          30µs           - Go XML Unmarshal
-         100µs           - Redis intrinsic latency
-         100µs           - AWS DynamoDB + DAX
-         100µs           - KDB+ queries
-         100µs           - High Frequency Trading direct market access range
-         200µs           - 1GB/s network air latency
-         200µs           - Go garbage collector pauses interval 2018
+          30µs           - UNIX domain socket; eventfd; fifo pipes; Go XML Unmarshal
+         100µs           - Redis intrinsic latency; AWS DynamoDB + DAX; KDB+; HFT direct market access
+         200µs           - 1GB/s network air latency; Go garbage collector pauses interval 2018
          500µs           - NGINX/Kong added latency
-     10ms                - AWS DynamoDB
-     10ms                - WIFI6 "air" latency
+     10ms                - AWS DynamoDB; WIFI6 "air" latency
      15ms                - AWS Sagemaker latency
      30ms                - 5G "air" latency
     100ms                - typical roundtrip from mobile to backend
