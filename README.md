@@ -57,7 +57,7 @@ How fast do you need to get?
          230µs           - San Francisco to San Jose at speed of light
          500µs           - NGINX/Kong added latency
      10ms                - AWS DynamoDB; WIFI6 "air" latency
-     15ms                - AWS Sagemaker latency
+     15ms                - AWS Sagemaker latency; "Flash Boys" 300million USD HFT drama
      30ms                - 5G "air" latency
      36ms                - San Francisco to Hong-Kong at speed of light
     100ms                - typical roundtrip from mobile to backend
