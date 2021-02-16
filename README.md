@@ -7,9 +7,14 @@ TODO: illustration of latencies breakdowns
 
 TODO: matrix of latencies
 
-- [ ] go-featureprocessing - gRPC - C++ - XGB
+- [ ] go-featureprocessing - gRPC - C++ - XGB, using synchronous version https://github.com/grpc/grpc/tree/master/examples/cpp/helloworld
 - [ ] go-featureprocessing - gRPCFlatBuffers - C++ - XGB
 - [ ] go-featureprocessing - cgo - XGB, https://github.com/Unity-Technologies/go-xgboost
+- [ ] onnx-go (sklearn + XGB) https://github.com/owulveryck/onnx-go
+- [ ] cgo - onnx (sklearn + XGB) http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html
+- [ ] UDS - gRPC - C++ - onnx (sklearn + XGB) http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html
+- [ ] UDS - gRPC - Python - onnx (sklearn + XGB) http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html
+- [ ] mxnet is called from cgo, lack official support, does not have xgboost
 
 ```
 BenchmarkXGB_GoFeatureProcessing_GoLeaves 	               29659258	       433 ns/op
@@ -58,7 +63,7 @@ How fast do you need to get?
          100µs           - KDB+ queries
          100µs           - High Frequency Trading direct market access range
          200µs           - 1GB/s network air latency
-         200µs           - Go garbage collector latency 2018
+         200µs           - Go garbage collector pauses interval 2018
          500µs           - NGINX/Kong added latency
      10ms                - AWS DynamoDB
      10ms                - WIFI6 "air" latency
