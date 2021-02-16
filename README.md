@@ -39,20 +39,19 @@ How fast do you need to get?
                20ns      - DDR4 CAS, first byte from memory latency
                20ns      - C++ raw hardcoded structs access
                80ns      - C++ FlatBuffers decode/traverse/dealloc
-              100ns      - go-featureprocessing typical processing
+              100ns      - go-featureprocessing
               150ns      - PCIe bus latency
               171ns      - Go cgo call boundary, 2015
-              200ns      - some High Frequency Trading FPGA claims
- ---------->  400ns      - gofeatureprocessing + leaves
+              200ns      - HFT FPGA
+ ---------->  400ns      - go-featureprocessing + leaves
               800ns      - Go Protocol Buffers Marshal
-              837ns      - Go json-iterator/go json decode
-           1µs           - Go protocol buffers unmarshal; High Frequency Trading FPGA
+              837ns      - Go json-iterator/go json unmarshal
+           1µs           - Go protocol buffers unmarshal
            3µs           - Go JSON Marshal
            7µs           - Go JSON Unmarshal
-           9µs           - Go XML Marshal
           10µs           - PCIe/NVLink startup time
-          17µs           - Python JSON encode or decode times
-          30µs           - UNIX domain socket; eventfd; fifo pipes; Go XML Unmarshal
+          17µs           - Python JSON encode/decode times
+          30µs           - UNIX domain socket; eventfd; fifo pipes
          100µs           - Redis intrinsic latency; KDB+; HFT direct market access
          200µs           - 1GB/s network air latency; Go garbage collector pauses interval 2018
          500µs           - NGINX/Kong added latency
