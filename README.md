@@ -7,11 +7,11 @@ TODO: illustration of latencies breakdowns
 
 TODO: matrix of latencies
 
-- [ ] go-featureprocessing - gRPCFlatBuffers - C++ - XGB
-- [ ] UDS - gRPC - C++ - onnx (sklearn + XGB) http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html
-- [ ] UDS - gRPC - Python - onnx (sklearn + XGB) http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html
 - [ ] cgo - go-featureprocessing - XGB, https://github.com/Unity-Technologies/go-xgboost
-- [ ] cgo - onnx (sklearn + XGB) http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html
+- [ ] go-featureprocessing - gRPCFlatBuffers - C++ - XGB
+
+TODO: linux
+TODO: system level profiling with perf
 
 ```
 BenchmarkXGB_GoFeatureProcessing_GoLeaves                   26733782          449 ns/op
@@ -54,20 +54,23 @@ How fast do you need to get?
           10µs           - PCIe/NVLink startup time
           17µs           - Python JSON encode or decode times
           30µs           - UNIX domain socket; eventfd; fifo pipes; Go XML Unmarshal
-         100µs           - Redis intrinsic latency; AWS DynamoDB + DAX; KDB+; HFT direct market access
+         100µs           - Redis intrinsic latency; KDB+; HFT direct market access
          200µs           - 1GB/s network air latency; Go garbage collector pauses interval 2018
          500µs           - NGINX/Kong added latency
      10ms                - AWS DynamoDB; WIFI6 "air" latency
      15ms                - AWS Sagemaker latency
      30ms                - 5G "air" latency
     100ms                - typical roundtrip from mobile to backend
-    200ms                - AWS RDS MySQL/PostgreSQL or AWS Aurora
+    200ms                - AWS RDS MySQL/PostgreSQL; AWS Aurora
  10s                     - AWS Cloudfront 1MB transfer time
 ```
 
-## Future work
+## Missing benchmarks
 
-- [ ] onnx-go (sklearn + XGB) https://github.com/owulveryck/onnx-go it is not full implementation of ONNX, some pieces for sklearn or XGBoost may be missing
+- [ ] UDS - gRPC - C++ - ONNX (sklearn + XGBoost)
+- [ ] UDS - gRPC - Python - ONNX (sklearn + XGBoost)
+- [ ] cgo ONNX (sklearn + XGBoost) (examples: [1](http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html))
+- [ ] native Go ONNX (sklearn + XGBoost) — no official support, https://github.com/owulveryck/onnx-go is not complete
 
 ## Reference
 
