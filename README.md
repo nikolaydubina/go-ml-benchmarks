@@ -22,7 +22,7 @@ BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB              76980         153
 BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB       46983         255204 ns/op
 BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB           18637         636378 ns/op
 BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB                         513       24435199 ns/op
-BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB         474       25139241 ns/o
+BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB         474       25139241 ns/op
 ```
 
 ## Dataset and Model
