@@ -8,11 +8,10 @@ TODO: illustration of latencies breakdowns
 TODO: matrix of latencies
 
 - [ ] go-featureprocessing - gRPCFlatBuffers - C++ - XGB
-- [ ] go-featureprocessing - cgo - XGB, https://github.com/Unity-Technologies/go-xgboost
-- [ ] onnx-go (sklearn + XGB) https://github.com/owulveryck/onnx-go
-- [ ] cgo - onnx (sklearn + XGB) http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html
 - [ ] UDS - gRPC - C++ - onnx (sklearn + XGB) http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html
 - [ ] UDS - gRPC - Python - onnx (sklearn + XGB) http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html
+- [ ] cgo - go-featureprocessing - XGB, https://github.com/Unity-Technologies/go-xgboost
+- [ ] cgo - onnx (sklearn + XGB) http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html
 
 ```
 BenchmarkXGB_GoFeatureProcessing_GoLeaves                   26733782          449 ns/op
@@ -72,6 +71,10 @@ How fast do you need to get?
     200ms                - AWS RDS MySQL/PostgreSQL or AWS Aurora
  10s                     - AWS Cloudfront 1MB transfer time
 ```
+
+TODO
+
+- [ ] onnx-go (sklearn + XGB) https://github.com/owulveryck/onnx-go it is not full implementation of ONNX, some pieces for sklearn or XGBoost may be missing
 
 ## Reference
 
