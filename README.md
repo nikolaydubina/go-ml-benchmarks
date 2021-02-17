@@ -1,13 +1,11 @@
 > Given a single raw sample in a Go service, how quickly can I get machine learning inference for it?
 
-TODO: illustration of latencies breakdowns
-TODO: matrix of latencies
-
+- [ ] illustration of latencies breakdowns
+- [ ] matrix of latencies
 - [ ] cgo - go-featureprocessing - XGB, https://github.com/Unity-Technologies/go-xgboost
 - [ ] go-featureprocessing - gRPCFlatBuffers - C++ - XGB
-
-TODO: linux
-TODO: system level profiling with perf
+- [ ] linux
+- [ ] system level profiling with perf
 
 ```
 BenchmarkXGB_GoFeatureProcessing_GoLeaves_noalloc           34282773          345 ns/op
@@ -19,13 +17,13 @@ BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB         466     2497994
 BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB                         499     25486481 ns/op
 ```
 
-## Dataset and Model
+### Dataset and Model
 
 We are using classic [Titanic dataset](https://www.kaggle.com/c/titanic).
 It contains numerical and categorical features thus it should be representative of a typical scenario.
 Data and notebooks to train model and preprocessor is available in /data and /notebooks respectively.
 
-## Some numbers for reference
+### Some numbers for reference
 
 How fast do you need to get?
 
@@ -63,14 +61,14 @@ How fast do you need to get?
  10s                     - AWS Cloudfront 1MB transfer time
 ```
 
-## Missing benchmarks
+### Missing benchmarks
 
 - [ ] UDS - gRPC - C++ - ONNX (sklearn + XGBoost)
 - [ ] UDS - gRPC - Python - ONNX (sklearn + XGBoost)
 - [ ] cgo ONNX (sklearn + XGBoost) (examples: [1](http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html))
 - [ ] native Go ONNX (sklearn + XGBoost) — no official support, https://github.com/owulveryck/onnx-go is not complete
 
-## Reference
+### Reference
 
 - [Go GC updates, 2018](https://blog.golang.org/ismmkeynote)
 - [cgo performance, GopherCon'18](https://about.sourcegraph.com/go/gophercon-2018-adventures-in-cgo-performance/)
