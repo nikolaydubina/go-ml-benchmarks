@@ -1,5 +1,3 @@
-# go-ml-benchmarks
-
 > Given a single raw sample in a Go service, how quickly can I get machine learning inference for it?
 
 TODO: illustration of latencies breakdowns
