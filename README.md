@@ -70,7 +70,7 @@ How fast do you need to get?
 ### Future work
 
 - [ ] batch mode
-- [ ] large text corpus
+- [ ] text
 - [ ] images
 - [ ] videos
 
