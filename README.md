@@ -16,7 +16,7 @@ BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB         466     2497994
 BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB                         499     25486481 ns/op
 ```
 
-### Dataset and Model
+### Dataset, Model, Preprocessor
 
 We are using classic [Titanic dataset](https://www.kaggle.com/c/titanic).
 It contains numerical and categorical features, which makes it a representative of typical case.
