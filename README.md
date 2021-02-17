@@ -67,6 +67,13 @@ How fast do you need to get?
 - [ ] cgo ONNX (sklearn + XGBoost) (examples: [1](http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html))
 - [ ] native Go ONNX (sklearn + XGBoost) — no official support, https://github.com/owulveryck/onnx-go is not complete
 
+### Future work
+
+- [ ] batch mode
+- [ ] large text corpus
+- [ ] images
+- [ ] videos
+
 ### Reference
 
 - [Go GC updates, 2018](https://blog.golang.org/ismmkeynote)
