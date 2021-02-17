@@ -17,7 +17,17 @@ BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB         466     2497994
 BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB                         499     25486481 ns/op
 ```
 
-### Dataset, Model, Preprocessor
+### Setup
+
+Using Linux Ubuntu 18.01 on AWS EC2 t2.
+
+- Transport: Unix Domain Sockets (UDS), TCP + HTTP
+- Encoding: JSON, [gRPC](https://grpc.io/), raw bytes
+- Preprocessing: [go-featureprocessing](https://github.com/nikolaydubina/go-featureprocessing), [sklearn](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.preprocessing)
+- Model: [XGBoost](https://github.com/dmlc/xgboost), [Leaves](https://github.com/dmitryikh/leaves)
+- Web Servers: for Python used [Gunicorn](https://gunicorn.org/) + [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+
+### Dataset and Model
 
 We are using classic [Titanic dataset](https://www.kaggle.com/c/titanic).
 It contains numerical and categorical features, which makes it a representative of typical case.
