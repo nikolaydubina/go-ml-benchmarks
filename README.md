@@ -1,5 +1,6 @@
 > Given a single raw sample in a Go service, how quickly can I get machine learning inference for it?
 
+- [ ] validate that prediction is the same
 - [ ] illustration of latencies breakdowns
 - [ ] cgo - go-featureprocessing - XGB, https://github.com/Unity-Technologies/go-xgboost
 - [ ] go-featureprocessing - gRPCFlatBuffers - C++ - XGB
