@@ -19,8 +19,8 @@ BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB                         499     2548648
 ### Dataset and Model
 
 We are using classic [Titanic dataset](https://www.kaggle.com/c/titanic).
-It contains numerical and categorical features thus it should be representative of a typical scenario.
-Data and notebooks to train model and preprocessor is available in /data and /notebooks respectively.
+It contains numerical and categorical features, which makes it a representative of typical case.
+Data and notebooks to train model and preprocessor is available in /data and /notebooks.
 
 ### Some numbers for reference
 
