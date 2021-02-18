@@ -103,7 +103,7 @@ Lastly, C++ also uses `libgomp.so`. We don't see on this chart, but likely Go co
 ![cgo](docs/profiles-readme/grpc-python-sklearn.png)
 
 
-**[22ms]** REST service version with sklearn — similarly, we see that Go code (`main.test`) is no longer visible in the chart. Python spends more time in `libgomp.so` as compared to Python + gRPC + skelarn version, however it is not clear why results are worser.
+**[22ms]** REST service version with sklearn — similarly, we see that Go code (`main.test`) is no longer visible in the chart. Python spends more time in `libgomp.so` as compared to Python + gRPC + skelarn version, however it is not clear why results are worse.
 
 ![cgo](docs/profiles-readme/rest.png)
 
