@@ -49,3 +49,21 @@ BenchmarkXGB_Go_GoFeatureProcessing_UDS_gRPC_CPP_XGB 	   32714	    367433 ns/op
 PASS
 ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	15.748s
 ?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
+PASS
+ok  	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/main	0.013s
+?   	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/xgb	[no test files]
+PASS
+ok  	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/main	0.013s
+?   	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/xgb	[no test files]
+goos: linux
+goarch: amd64
+pkg: github.com/nikolaydubina/go-ml-benchmarks/cgo-version/main
+cpu: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+BenchmarkXGB_CGo_GoFeatureProcessing_XGB 	goos: linux
+goarch: amd64
+pkg: github.com/nikolaydubina/go-ml-benchmarks/cgo-version/main
+cpu: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+BenchmarkXGB_CGo_GoFeatureProcessing_XGB 	   72337	    244941 ns/op
+PASS
+ok  	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/main	19.414s
+?   	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/xgb	[no test files]
