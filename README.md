@@ -9,7 +9,6 @@ In work bellow, we compare typical implementations on how this inference task ca
 
 - [ ] validate that prediction is the same
 - [ ] illustration of latencies breakdowns
-- [ ] cgo - go-featureprocessing - XGB, https://github.com/Unity-Technologies/go-xgboost
 - [ ] system level profiling with perf
 
 ```

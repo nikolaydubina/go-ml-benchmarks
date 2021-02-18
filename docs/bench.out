@@ -47,3 +47,41 @@ BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB 	   31960	    372292 ns/op
 PASS
 ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	15.723s
 ?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/go-client/main [setup failed]
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/go-client/main [setup failed]
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/go-client/main [setup failed]
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/go-client/main [setup failed]
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/go-client/main [setup failed]
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/go-client/main [setup failed]
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/go-client/main [setup failed]
+?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/xgb	[no test files]
+FAIL
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/main [build failed]
+?   	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/xgb	[no test files]
+FAIL
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/main [build failed]
+?   	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/xgb	[no test files]
+FAIL
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/main [setup failed]
+?   	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/xgb	[no test files]
+FAIL
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/main [build failed]
+?   	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/xgb	[no test files]
+FAIL
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/main [build failed]
+?   	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/xgb	[no test files]
+FAIL
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/main [setup failed]
+?   	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/xgb	[no test files]
+FAIL
+FAIL	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/main [build failed]
+?   	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/xgb	[no test files]
+FAIL
+goos: linux
+goarch: amd64
+pkg: github.com/nikolaydubina/go-ml-benchmarks/cgo-version/main
+cpu: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+BenchmarkXGB_CGo_GoFeatureProcessing_XGB 	   64647	    245733 ns/op
+PASS
+ok  	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/main	17.774s
+?   	github.com/nikolaydubina/go-ml-benchmarks/cgo-version/xgb	[no test files]
