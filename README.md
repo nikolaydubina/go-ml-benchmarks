@@ -7,7 +7,6 @@ Thus, we are focusing on tabular machine learning models only, such as popular [
 Next, it is common to run Go service in a backed form and on Linux platform, thus we do not consider other deployment options.
 In work bellow, we compare typical implementations on how this inference task can be achieved.
 
-- [ ] validate that prediction is the same
 - [ ] illustration of latencies breakdowns
 - [ ] system level profiling with perf
 
