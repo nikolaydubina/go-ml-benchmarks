@@ -33,7 +33,7 @@ var sample = Passenger{
 	Embarked:    "S",
 }
 
-func BenchmarkXGB_GoFeatureProcessing_GoLeaves(b *testing.B) {
+func BenchmarkXGB_Go_GoFeatureProcessing_GoLeaves(b *testing.B) {
 	var fp PassengerFeatureTransformer
 	config, err := ioutil.ReadFile(os.Getenv("PREPROCESSOR_PATH"))
 	if err != nil {
@@ -58,7 +58,7 @@ func BenchmarkXGB_GoFeatureProcessing_GoLeaves(b *testing.B) {
 	}
 }
 
-func BenchmarkXGB_GoFeatureProcessing_GoLeaves_noalloc(b *testing.B) {
+func BenchmarkXGB_Go_GoFeatureProcessing_GoLeaves_noalloc(b *testing.B) {
 	var fp PassengerFeatureTransformer
 	config, err := ioutil.ReadFile(os.Getenv("PREPROCESSOR_PATH"))
 	if err != nil {
@@ -99,7 +99,7 @@ func predictRawBytes(w io.Writer, r io.Reader, features []float64) (float64, err
 	return prediction, nil
 }
 
-func BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB(b *testing.B) {
+func BenchmarkXGB_Go_GoFeatureProcessing_UDS_RawBytes_Python_XGB(b *testing.B) {
 	var fp PassengerFeatureTransformer
 	config, err := ioutil.ReadFile(os.Getenv("PREPROCESSOR_PATH"))
 	if err != nil {
@@ -197,19 +197,19 @@ func benchmark_UDS_gRPC_Struct_XGB(b *testing.B) {
 	}
 }
 
-func BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB(b *testing.B) {
+func BenchmarkXGB_Go_UDS_gRPC_Python_sklearn_XGB(b *testing.B) {
 	benchmark_UDS_gRPC_Struct_XGB(b)
 }
 
-func BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB(b *testing.B) {
+func BenchmarkXGB_Go_GoFeatureProcessing_UDS_gRPC_Python_XGB(b *testing.B) {
 	benchmark_UDS_gRPC_Processed_XGB(b)
 }
 
-func BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB(b *testing.B) {
+func BenchmarkXGB_Go_GoFeatureProcessing_UDS_gRPC_CPP_XGB(b *testing.B) {
 	benchmark_UDS_gRPC_Processed_XGB(b)
 }
 
-func BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB(b *testing.B) {
+func BenchmarkXGB_Go_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB(b *testing.B) {
 	var fp PassengerFeatureTransformer
 	config, err := ioutil.ReadFile(os.Getenv("PREPROCESSOR_PATH"))
 	if err != nil {

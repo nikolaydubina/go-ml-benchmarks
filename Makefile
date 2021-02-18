@@ -55,7 +55,7 @@ rest:
 init-grpc-go:
 	sudo apt-get install -y protobuf-compiler
 	export GO111MODULE=on
-	export PATH="$PATH:$(go env GOPATH)/bin"
+	export PATH="$$PATH:$(go env GOPATH)/bin"
 	go get \
 		google.golang.org/protobuf/cmd/protoc-gen-go \
 		google.golang.org/grpc/cmd/protoc-gen-go-grpc
@@ -129,7 +129,7 @@ grpc-cpp: grpc-cpp-build
 		go test -bench=BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB -benchtime=10s -cpu=1 ./... | tee -a $(PWD)/docs/bench.out	
 	pkill -f predictor
 
-bench: clean leaves uds rest grpc-python-sklearn grpc-python-processed grpc-cpp
+bench: clean leaves cgo uds rest grpc-python-sklearn grpc-python-processed grpc-cpp
 	cat docs/bench.out | grep Benchmark > docs/bench-clean.out
 
 clean:
