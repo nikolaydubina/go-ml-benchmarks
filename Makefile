@@ -21,7 +21,7 @@ leaves:
 		go test -bench=BenchmarkXGB_Go_GoFeatureProcessing_GoLeaves* -benchtime=10s -cpu=1 -cpuprofile $(PWD)/docs/profiles/leaves/cpu.profile ./main | tee -a $(PWD)/docs/bench.out
 
 cgo:
-	mkdir -p docs/profiles/cgo; cd docs/profiles/cgo; perf record -F 99 -a -g -- sleep 15 &
+	mkdir -p docs/profiles/cgo; cd docs/profiles/cgo; perf record -F 99 -a -g -- sleep 30 &
 	cd cgo-version; \
 		GO111MODULE=on \
 		PREPROCESSOR_PATH=$(PWD)/data/models/go-featureprocessor.json \
@@ -29,7 +29,7 @@ cgo:
 		CGO_CFLAGS="-I$(XGBOOST_ROOT)/include -I$(XGBOOST_ROOT)/dmlc-core/include -I$(XGBOOST_ROOT)/rabit/include" \
 		CGO_LDFLAGS="-L$(XGBOOST_ROOT)/lib -L$(MY_INSTALL_DIR)/lib -lxgboost -ldmlc -lstdc++ -lm -fopenmp" \
 		go test -bench=BenchmarkXGB_Go_CGo* -benchtime=10s -cpu=1 ./... | tee -a $(PWD)/docs/bench.out
-	sleep 15
+	sleep 20
 
 uds:
 	pip3 install -r bench-gofeatureprocessing-uds-raw-python-xgb/requirements.txt
