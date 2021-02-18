@@ -7,7 +7,7 @@ Thus, we are focusing on tabular machine learning models only, such as popular [
 It is common to run Go service in a backed form and on Linux platform, thus we do not consider other deployment options.
 In the work bellow, we compare typical implementations on how this inference task can be achieved.
 
-- [ ] illustration of latencies breakdowns
+![diagram](docs/go-ml-benchmarks.png)
 
 ```
 host: AWS EC2 t2.xlarge shared
