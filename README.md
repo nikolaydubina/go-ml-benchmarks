@@ -8,7 +8,6 @@ It is common to run Go service in a backed form and on Linux platform, thus we d
 In the work bellow, we compare typical implementations on how this inference task can be achieved.
 
 - [ ] illustration of latencies breakdowns
-- [ ] system level profiling with perf
 
 ```
 host: AWS EC2 t2.xlarge shared
@@ -76,6 +75,37 @@ How fast do you need to get?
     200ms                - AWS RDS MySQL/PostgreSQL; AWS Aurora
  10s                     - AWS Cloudfront 1MB transfer time
 ```
+
+### Profiling and Analysis
+
+**[491ns/575ns]** Leaves — we see that most of time taken in Leaves Random Forest code. Leaves code does not have mallocs. Inplace preprocessing does not have mallocs, with non-inplace version malloc happen and takes and takes half of time of preprocessing.
+![leaves](docs/profiles-readme/leaves.png)
+
+**[243µ]** UDS Raw bytes Python — we see that Python takes much longer time than preprocessing in Go, however Go is at least visible on the chart. We also note that Python spends most of the time in `libgomp.so` call, this library is in GNU OpenMP written in C which does parallel operations.
+
+![uds](docs/profiles-readme/uds.png)
+
+**[244µ]** CGo version — similarly, we see that call to `libgomp.so` is being done. It is much smaller compare to rest of o CGo code, as compared to Python version above. Over overall results are not better then? Likely this is due to performance degradation from Go to CGo. We also note that malloc is done.
+
+![cgo](docs/profiles-readme/cgo.png)
+
+**[367µ]** gRPC over UDS to C++ — we see that Go code is around 50% of C++ version. In C++ 50% of time spend on gRPC code.
+Lastly, C++ also uses `libgomp.so`. We don't see on this chart, but likely Go code also spends considerable time on gRPC code.
+
+![cgo](docs/profiles-readme/grpc-cpp.png)
+
+**[785µ]** gRPC over UDS to Python wihout sklearn — we see that Go code is visible in the chart. Python spends only portion on time in `libgomp.so`.
+
+![cgo](docs/profiles-readme/grpc-python-processed.png)
+
+**[21ms]** gRPC over UDS to Python with sklearn — we see that Go code (`main.test`) is no longer visible the chart. Python spends only small fraction of time on `libgomp.so`.
+
+![cgo](docs/profiles-readme/grpc-python-sklearn.png)
+
+
+**[22ms]** REST service version with sklearn — similarly, we see that Go code (`main.test`) is no longer visible in the chart. Python spends more time in `libgomp.so` as compared to Python + gRPC + skelarn version, however it is not clear why results are worser.
+
+![cgo](docs/profiles-readme/rest.png)
 
 ### Future work
 
