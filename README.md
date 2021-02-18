@@ -13,6 +13,8 @@ In work bellow, we compare typical implementations on how this inference task ca
 - [ ] system level profiling with perf
 
 ```
+host: AWS EC2 t2.xlarge shared
+os: Ubuntu 20.04 LTS 
 goos: linux
 goarch: amd64
 cpu: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
@@ -25,12 +27,10 @@ BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB                         554      211870
 BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB         550      21496923 ns/op
 ```
 
-### Setup
+### Abbreviations and Frameworks
 
-Using Linux Ubuntu 20.04 LTS on AWS EC2 `t2.xlarge` shared hardware host.
-
-- Transport: Unix Domain Sockets (UDS), TCP + HTTP
-- Encoding: JSON, [gRPC](https://grpc.io/), raw bytes
+- Transport: Unix Domain Sockets (UDS), TCP, HTTP
+- Encoding: JSON, [gRPC](https://grpc.io/), raw bytes with fixed number of float64 IEEE 754
 - Preprocessing: [go-featureprocessing](https://github.com/nikolaydubina/go-featureprocessing), [sklearn](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.preprocessing)
 - Model: [XGBoost](https://github.com/dmlc/xgboost), [Leaves](https://github.com/dmitryikh/leaves) (Leaves is XGBoost in native Go)
 - Web Servers: for Python used [Gunicorn](https://gunicorn.org/) + [Flask](https://flask.palletsprojects.com/en/1.1.x/)
