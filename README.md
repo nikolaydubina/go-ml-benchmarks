@@ -77,17 +77,14 @@ How fast do you need to get?
  10s                     - AWS Cloudfront 1MB transfer time
 ```
 
-### Missing benchmarks
+### Future work
 
 - [ ] go-featureprocessing - gRPCFlatBuffers - C++ - XGB
+- [ ] batch mode
 - [ ] UDS - gRPC - C++ - ONNX (sklearn + XGBoost)
 - [ ] UDS - gRPC - Python - ONNX (sklearn + XGBoost)
 - [ ] cgo ONNX (sklearn + XGBoost) (examples: [1](http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html))
 - [ ] native Go ONNX (sklearn + XGBoost) — no official support, https://github.com/owulveryck/onnx-go is not complete
-
-### Future work
-
-- [ ] batch mode
 - [ ] text
 - [ ] images
 - [ ] videos
