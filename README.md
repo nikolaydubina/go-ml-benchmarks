@@ -25,7 +25,7 @@ BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB                         499     2548648
 
 ### Setup
 
-Using Linux Ubuntu 18.01 on AWS EC2 t2.
+Using Linux Ubuntu 20.04 LTS on AWS EC2 `t2.xlarge` shared hardware host.
 
 - Transport: Unix Domain Sockets (UDS), TCP + HTTP
 - Encoding: JSON, [gRPC](https://grpc.io/), raw bytes
