@@ -10,7 +10,6 @@ In work bellow, we compare typical implementations on how this inference task ca
 - [ ] validate that prediction is the same
 - [ ] illustration of latencies breakdowns
 - [ ] cgo - go-featureprocessing - XGB, https://github.com/Unity-Technologies/go-xgboost
-- [ ] go-featureprocessing - gRPCFlatBuffers - C++ - XGB
 - [ ] linux
 - [ ] system level profiling with perf
 
@@ -80,6 +79,7 @@ How fast do you need to get?
 
 ### Missing benchmarks
 
+- [ ] go-featureprocessing - gRPCFlatBuffers - C++ - XGB
 - [ ] UDS - gRPC - C++ - ONNX (sklearn + XGBoost)
 - [ ] UDS - gRPC - Python - ONNX (sklearn + XGBoost)
 - [ ] cgo ONNX (sklearn + XGBoost) (examples: [1](http://onnx.ai/sklearn-onnx/auto_examples/plot_pipeline_xgboost.html))
