@@ -230,7 +230,7 @@ func BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB(b *testing.B) {
 			panic(err)
 		}
 
-		resp, err := http.Post("http://0.0.0.0:80/predict", "application/json", bytes.NewReader(features))
+		resp, err := http.Post("http://0.0.0.0:1024/predict", "application/json", bytes.NewReader(features))
 		if resp == nil || resp.Body == nil || err != nil {
 			panic(err)
 		}

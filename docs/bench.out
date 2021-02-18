@@ -1,61 +1,49 @@
-goos: darwin
+goos: linux
 goarch: amd64
 pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
-BenchmarkXGB_GoFeatureProcessing_GoLeaves 	26733782	       449 ns/op
+cpu: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+BenchmarkXGB_GoFeatureProcessing_GoLeaves         	21234387	       564.2 ns/op
+BenchmarkXGB_GoFeatureProcessing_GoLeaves_noalloc 	24126729	       500.6 ns/op
 PASS
-ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	12.611s
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	25.154s
 ?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
-goos: darwin
+goos: linux
 goarch: amd64
 pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
-BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB 	   36494	    327929 ns/op
+cpu: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB 	   45168	    240257 ns/op
 PASS
-ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	15.499s
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	13.560s
 ?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
-goos: darwin
+goos: linux
 goarch: amd64
 pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
-BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB 	     466	  24979949 ns/op
+cpu: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB 	     550	  21496923 ns/op
 PASS
-ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	14.746s
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	14.044s
 ?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
-goos: darwin
+goos: linux
 goarch: amd64
 pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
-BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB 	     499	  25486481 ns/op
+cpu: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB 	     554	  21187018 ns/op
 PASS
-ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	15.337s
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	13.941s
 ?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
-goos: darwin
+goos: linux
 goarch: amd64
 pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
-BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB 	   18043	    678858 ns/op
+cpu: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB 	   15034	    794769 ns/op
 PASS
-ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	19.183s
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	20.029s
 ?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
-goos: darwin
+goos: linux
 goarch: amd64
 pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
-BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB 	   47102	    280710 ns/op
+cpu: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB 	   31960	    372292 ns/op
 PASS
-ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	15.974s
-?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
-FAIL	github.com/nikolaydubina/go-ml-benchmarks/go-client/main [build failed]
-?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
-FAIL
-goos: darwin
-goarch: amd64
-pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
-BenchmarkXGB_GoFeatureProcessing_GoLeaves         	29153616	       431 ns/op
-BenchmarkXGB_GoFeatureProcessing_GoLeaves_noalloc 	34282773	       345 ns/op
-PASS
-ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	25.781s
-?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]
-goos: darwin
-goarch: amd64
-pkg: github.com/nikolaydubina/go-ml-benchmarks/go-client/main
-BenchmarkXGB_GoFeatureProcessing_GoLeaves         	29103538	       415 ns/op
-BenchmarkXGB_GoFeatureProcessing_GoLeaves_noalloc 	34482543	       359 ns/op
-PASS
-ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	25.680s
+ok  	github.com/nikolaydubina/go-ml-benchmarks/go-client/main	15.723s
 ?   	github.com/nikolaydubina/go-ml-benchmarks/go-client/proto	[no test files]

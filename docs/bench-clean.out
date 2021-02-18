@@ -1,6 +1,10 @@
-BenchmarkXGB_GoFeatureProcessing_GoLeaves 	26733782	       449 ns/op
-BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB 	   36494	    327929 ns/op
-BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB 	     466	  24979949 ns/op
-BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB 	     499	  25486481 ns/op
-BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB 	   18043	    678858 ns/op
-BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB 	   47102	    280710 ns/op
+goos: linux
+goarch: amd64
+cpu: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+BenchmarkXGB_GoFeatureProcessing_GoLeaves_noalloc           24126729           500 ns/op
+BenchmarkXGB_GoFeatureProcessing_GoLeaves                   21234387           564 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB       45168        240257 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB              31960        372292 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB           15034        794769 ns/op
+BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB                         554      21187018 ns/op
+BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB         550      21496923 ns/op

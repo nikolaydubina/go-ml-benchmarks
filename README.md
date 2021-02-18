@@ -10,17 +10,19 @@ In work bellow, we compare typical implementations on how this inference task ca
 - [ ] validate that prediction is the same
 - [ ] illustration of latencies breakdowns
 - [ ] cgo - go-featureprocessing - XGB, https://github.com/Unity-Technologies/go-xgboost
-- [ ] linux
 - [ ] system level profiling with perf
 
 ```
-BenchmarkXGB_GoFeatureProcessing_GoLeaves_noalloc           34282773          345 ns/op
-BenchmarkXGB_GoFeatureProcessing_GoLeaves                   26733782          449 ns/op
-BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB              47102       280710 ns/op
-BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB       36494       327929 ns/op
-BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB           18043       678858 ns/op
-BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB         466     24979949 ns/op
-BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB                         499     25486481 ns/op
+goos: linux
+goarch: amd64
+cpu: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+BenchmarkXGB_GoFeatureProcessing_GoLeaves_noalloc           24126729           500 ns/op
+BenchmarkXGB_GoFeatureProcessing_GoLeaves                   21234387           564 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_RawBytes_Python_XGB       45168        240257 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_CPP_XGB              31960        372292 ns/op
+BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB           15034        794769 ns/op
+BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB                         554      21187018 ns/op
+BenchmarkXGB_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB         550      21496923 ns/op
 ```
 
 ### Setup
@@ -50,12 +52,11 @@ How fast do you need to get?
                20ns      - DDR4 CAS, first byte from memory latency
                20ns      - C++ raw hardcoded structs access
                80ns      - C++ FlatBuffers decode/traverse/dealloc
-              100ns      - go-featureprocessing
               150ns      - PCIe bus latency
               171ns      - cgo call boundary, 2015
               200ns      - HFT FPGA
- ---------->  400ns      - go-featureprocessing + leaves
               475ns      - 2020 MLPerf winner recommendation inference time per sample
+ ---------->  500ns      - go-featureprocessing + leaves
               800ns      - Go Protocol Buffers Marshal
               837ns      - Go json-iterator/go json unmarshal
            1µs           - Go protocol buffers unmarshal

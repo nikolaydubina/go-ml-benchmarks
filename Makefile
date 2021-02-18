@@ -1,8 +1,9 @@
 PWD := $(shell echo $$PWD)
-UNAME := $(shell uname)
 MY_INSTALL_DIR := $(shell echo $$HOME/.local)
 
 init:
+	sudo apt-get install python3-pip
+	pip3 install jupyter
 	cd go-client; go mod download && go generate ./...
 	cd third_party/grpc; git submodule update --init --recursive
 	cd third_party/xgboost; git submodule update --init --recursive
@@ -33,7 +34,7 @@ rest:
 	cd bench-http-json-python-gunicorn-flask-sklearn-xgb; \
 		PREPROCESSOR_PATH=$(PWD)/data/models/titanic_preprocessor.sklearn \
 		MODEL_PATH=$(PWD)/data/models/titanic.xgb \
-		gunicorn --workers=3 --threads=2 --bind=0.0.0.0:80 wsgi:app & 
+		gunicorn --workers=3 --threads=2 --bind=0.0.0.0:1024 wsgi:app & 
 	sleep 7
 	cd go-client; \
 		GO111MODULE=on \
@@ -42,9 +43,9 @@ rest:
 	-pkill -f gunicorn
 
 init-grpc-go:
-ifeq ($(UNAME), Darwin)
-	brew install protobuf
-endif
+	sudo apt-get install -y protobuf-compiler
+	export GO111MODULE=on
+	export PATH="$PATH:$(go env GOPATH)/bin"
 	go get \
 		google.golang.org/protobuf/cmd/protoc-gen-go \
 		google.golang.org/grpc/cmd/protoc-gen-go-grpc
@@ -67,7 +68,8 @@ grpc-python-sklearn: init-grpc-go init-grpc-python
 	cd go-client; \
 		GO111MODULE=on \
 		go test -bench=BenchmarkXGB_UDS_gRPC_Python_sklearn_XGB -benchtime=10s -cpu=1 ./... | tee -a $(PWD)/docs/bench.out	
-	-pkill -f Python
+	-sudo pkill -f Python
+	-sudo pkill -f python
 
 grpc-python-processed: init-grpc-go init-grpc-python
 	cd bench-uds-grpc-python-xgb; \
@@ -79,22 +81,19 @@ grpc-python-processed: init-grpc-go init-grpc-python
 		GO111MODULE=on \
 		PREPROCESSOR_PATH=$(PWD)/data/models/go-featureprocessor.json \
 		go test -bench=BenchmarkXGB_GoFeatureProcessing_UDS_gRPC_Python_XGB -benchtime=10s -cpu=1 ./... | tee -a $(PWD)/docs/bench.out	
-	-pkill -f Python
+	-sudo pkill -f Python
+	-sudo pkill -f python
 
 cpp-grpc-lib:
 	mkdir -p $(MY_INSTALL_DIR)
 	export PATH="$$PATH:$(MY_INSTALL_DIR)/bin"
-ifeq ($(UNAME), Darwin)
-	brew install protobuf autoconf automake libtool pkg-config
-	-brew install smake
-endif
+	sudo apt-get install -y autoconf automake libtool pkg-config cmake
 	cd third_party/grpc; \
 		mkdir -p cmake/build; \
-		pushd cmake/build; \
+		cd cmake/build; \
 		cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=$(MY_INSTALL_DIR) ../..; \
 		make -j 4; \
-		make install; \
-		popd
+		make install
 
 cpp-xgb-lib:
 	cd third_party/xgboost; \
@@ -125,11 +124,12 @@ bench: clean leaves uds rest grpc-python-sklearn grpc-python-processed grpc-cpp
 
 clean:
 	jupyter nbconvert --clear-output --inplace notebooks/*.ipynb
-	-pkill -f Python
-	-pkill -f gunicorn
+	-sudo pkill -f Python
+	-sudo pkill -f python
+	-sudo pkill -f gunicorn
 	-rm sc
 	-rm docs/bench.out
-	-cd bench-gofeatureprocessing-uds-raw-python-xgb; kill -9 $$(cat pids); rm pids
-	-pkill -f predictor
+	-cd bench-gofeatureprocessing-uds-raw-python-xgb; sudo kill -9 $$(cat pids); rm pids
+	-sudo pkill -f predictor
 	-rm -rf build
 	-rm -rf bench-uds-grpc-cpp-xgb/cmake
