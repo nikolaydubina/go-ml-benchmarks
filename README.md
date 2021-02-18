@@ -81,20 +81,20 @@ How fast do you need to get?
 **[491ns/575ns]** Leaves — we see that most of time taken in Leaves Random Forest code. Leaves code does not have mallocs. Inplace preprocessing does not have mallocs, with non-inplace version malloc happen and takes and takes half of time of preprocessing.
 ![leaves](docs/profiles-readme/leaves.png)
 
-**[243µ]** UDS Raw bytes Python — we see that Python takes much longer time than preprocessing in Go, however Go is at least visible on the chart. We also note that Python spends most of the time in `libgomp.so` call, this library is in GNU OpenMP written in C which does parallel operations.
+**[243µs]** UDS Raw bytes Python — we see that Python takes much longer time than preprocessing in Go, however Go is at least visible on the chart. We also note that Python spends most of the time in `libgomp.so` call, this library is in GNU OpenMP written in C which does parallel operations.
 
 ![uds](docs/profiles-readme/uds.png)
 
-**[244µ]** CGo version — similarly, we see that call to `libgomp.so` is being done. It is much smaller compare to rest of o CGo code, as compared to Python version above. Over overall results are not better then? Likely this is due to performance degradation from Go to CGo. We also note that malloc is done.
+**[244µs]** CGo version — similarly, we see that call to `libgomp.so` is being done. It is much smaller compare to rest of o CGo code, as compared to Python version above. Over overall results are not better then? Likely this is due to performance degradation from Go to CGo. We also note that malloc is done.
 
 ![cgo](docs/profiles-readme/cgo.png)
 
-**[367µ]** gRPC over UDS to C++ — we see that Go code is around 50% of C++ version. In C++ 50% of time spend on gRPC code.
+**[367µs]** gRPC over UDS to C++ — we see that Go code is around 50% of C++ version. In C++ 50% of time spend on gRPC code.
 Lastly, C++ also uses `libgomp.so`. We don't see on this chart, but likely Go code also spends considerable time on gRPC code.
 
 ![cgo](docs/profiles-readme/grpc-cpp.png)
 
-**[785µ]** gRPC over UDS to Python wihout sklearn — we see that Go code is visible in the chart. Python spends only portion on time in `libgomp.so`.
+**[785µs]** gRPC over UDS to Python wihout sklearn — we see that Go code is visible in the chart. Python spends only portion on time in `libgomp.so`.
 
 ![cgo](docs/profiles-readme/grpc-python-processed.png)
 
