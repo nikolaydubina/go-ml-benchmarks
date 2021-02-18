@@ -2,9 +2,9 @@
 
 > Given a raw data in a Go service, how quickly can I get machine learning inference for it?
 
-Typically, Go is dealing with structured and single-sample data.
-Thus, we are focusing on tabular machine learning models only, such as popular [XGBoost](ttps://github.com/dmlc/xgboost).
-Next, it is common to run Go service in backed form and on Linux platform, thus we do not consider other deployment options.
+Typically, Go is dealing with structured single-sample data.
+Thus, we are focusing on tabular machine learning models only, such as popular [XGBoost](https://github.com/dmlc/xgboost).
+Next, it is common to run Go service in a backed form and on Linux platform, thus we do not consider other deployment options.
 In work bellow, we compare typical implementations on how this inference task can be achieved.
 
 - [ ] validate that prediction is the same
