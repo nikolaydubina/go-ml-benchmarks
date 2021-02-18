@@ -5,7 +5,7 @@
 Typically, Go is dealing with structured single sample data.
 Thus, we are focusing on tabular machine learning models only, such as popular [XGBoost](https://github.com/dmlc/xgboost).
 It is common to run Go service in a backed form and on Linux platform, thus we do not consider other deployment options.
-In the work bellow, we compare typical implementations on how this inference task can be achieved.
+In the work bellow, we compare typical implementations on how this inference task can be performed.
 
 ![diagram](docs/go-ml-benchmarks.png)
 
