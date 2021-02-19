@@ -15,14 +15,14 @@ os: Ubuntu 20.04 LTS
 goos: linux
 goarch: amd64
 cpu: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
-BenchmarkXGB_Go_GoFeatureProcessing_GoLeaves_noalloc           24587670           491 ns/op
-BenchmarkXGB_Go_GoFeatureProcessing_GoLeaves                   20823667           575 ns/op
-BenchmarkXGB_Go_GoFeatureProcessing_UDS_RawBytes_Python_XGB       46656        243056 ns/op
-BenchmarkXGB_CGo_GoFeatureProcessing_XGB                          72337        244941 ns/op
-BenchmarkXGB_Go_GoFeatureProcessing_UDS_gRPC_CPP_XGB              32714        367433 ns/op
-BenchmarkXGB_Go_GoFeatureProcessing_UDS_gRPC_Python_XGB           15352        785147 ns/op
-BenchmarkXGB_Go_UDS_gRPC_Python_sklearn_XGB                         546      21699830 ns/op
-BenchmarkXGB_Go_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB         546      21935237 ns/op
+BenchmarkXGB_Go_GoFeatureProcessing_GoLeaves_noalloc                              491 ns/op
+BenchmarkXGB_Go_GoFeatureProcessing_GoLeaves                                      575 ns/op
+BenchmarkXGB_Go_GoFeatureProcessing_UDS_RawBytes_Python_XGB                    243056 ns/op
+BenchmarkXGB_CGo_GoFeatureProcessing_XGB                                       244941 ns/op
+BenchmarkXGB_Go_GoFeatureProcessing_UDS_gRPC_CPP_XGB                           367433 ns/op
+BenchmarkXGB_Go_GoFeatureProcessing_UDS_gRPC_Python_XGB                        785147 ns/op
+BenchmarkXGB_Go_UDS_gRPC_Python_sklearn_XGB                                  21699830 ns/op
+BenchmarkXGB_Go_HTTP_JSON_Python_Gunicorn_Flask_sklearn_XGB                  21935237 ns/op
 ```
 
 ### Abbreviations and Frameworks
