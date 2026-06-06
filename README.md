@@ -3,7 +3,7 @@
 > Given a raw data in a Go service, how quickly can I get machine learning inference for it?
 
 <p align="center">
-  ✨ Sponsored by <a href="https://apps.apple.com/app/id6738306589">NDX AI Shopping Assistant</a>
+  ✨ Sponsored by <a href="https://ndx.one/?ct=github">NDX Technologies</a>
 </p>
 
 Typically, Go is dealing with structured single sample data.
